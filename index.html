@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech Exit Tracker</title>
+  <link rel="stylesheet" href="styles/main.css?v=3" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Biotech Exit Tracker<span> · v1</span></div>
+    <nav>
+      <a href="index.html">Overview</a>
+      <a href="pipelines.html">Pharma Pipelines</a>
+      <a href="ma.html">M&amp;A Deals</a>
+      <a href="ipos.html">IPOs</a>
+    </nav>
+    <div class="updated">Updated 2026-05-24</div>
+  </header>
+
+  <main>
+    <h1>Biotech Exit Tracker</h1>
+    <p class="subtitle">A working view of who's buying, what's being built, and what's listed — for thinking about 4–7 year exits.</p>
+
+    <div class="landing-grid">
+      <a class="landing-card" href="pipelines.html">
+        <h3>Pharma Pipelines</h3>
+        <p>Top 20 large pharma by Rx revenue. TA heatmap + modality mix + late-stage assets + patent cliff exposure.</p>
+        <div class="stat" id="stat-pharma">—</div>
+        <div class="stat-label">companies covered</div>
+      </a>
+      <a class="landing-card" href="ma.html">
+        <h3>M&amp;A &amp; Licensing</h3>
+        <p>Biotech deals ≥ $500M since 2021. Outright acquisitions + China-out platform licensing. MOA + indication + pathophysiology per deal.</p>
+        <div class="stat" id="stat-ma">—</div>
+        <div class="stat-label">deals tracked</div>
+      </a>
+      <a class="landing-card" href="ipos.html">
+        <h3>Biotech IPOs</h3>
+        <p>Selected US (NASDAQ/NYSE) + HKEX 18A biotech IPOs 2021–2026. Lead asset, clinical phase, IPO price &amp; current market cap.</p>
+        <div class="stat" id="stat-ipos">—</div>
+        <div class="stat-label">IPOs tracked</div>
+      </a>
+    </div>
+
+    <div class="panel" style="margin-top: 28px;">
+      <h2>Methodology</h2>
+      <p class="note">How each page is sourced, and what's automated vs hand-curated. Read this before citing any specific number.</p>
+
+      <details open>
+        <summary><strong>Pharma Pipelines — fully hand-curated</strong></summary>
+        <div class="body">
+          <p><strong>Top-20 pharma by Rx revenue.</strong> No automation; every cell is read off a primary source by hand:</p>
+          <ul>
+            <li><strong>Revenue by therapeutic area</strong> — company 10-K segment reporting + Q4 earnings call decks (FY2024 figures, rounded to USD billions).</li>
+            <li><strong>Pipeline counts and lead assets</strong> — each company's own published pipeline page or most recent R&amp;D-day deck.</li>
+            <li><strong>Patent cliff dates</strong> — US composition-of-matter or biologic exclusivity expiry, cross-checked against FDA Orange/Purple Book and analyst aggregations.</li>
+            <li><strong>Boehringer Ingelheim</strong> is private — figures are estimates only.</li>
+          </ul>
+          <p class="muted small">Implication: pipeline data lags whatever each company most recently updated on its own site. Always verify against the source before citing.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>M&amp;A Deals — systematic SEC EDGAR pull (acquisitions) + curated trade press (licensing &amp; partnerships)</strong></summary>
+        <div class="body">
+          <p><strong>US public-company acquisitions, all sizes, 2021–2026:</strong> sourced systematically by paginating SEC EDGAR's full-text search (EFTS API) for two form types, then filtering to biotech/pharma SIC codes:</p>
+          <ul>
+            <li><strong>SC 14D9</strong> — Solicitation/Recommendation Statement filed by the target in response to a tender offer.</li>
+            <li><strong>DEFM14A</strong> — Definitive Merger Proxy filed by the target for shareholder vote.</li>
+            <li><strong>SIC code filter:</strong> 2830, 2833, 2835, 2836, 8731 (pharmaceuticals, biologicals, in-vitro/in-vivo diagnostics, commercial physical &amp; biological research).</li>
+          </ul>
+          <p>Deal terms (acquirer, price/share, total value, lead asset, MOA, rationale) are then filled in from each filing document and the company press release.</p>
+          <p><strong>Licensing and Partnership+Equity deals (≥$500M headline only):</strong> still hand-curated from trade press (FierceBiotech, BioPharma Dive, Endpoints, company press releases).</p>
+          <p><strong>Excluded by scope:</strong> SPAC business combinations, asset divestitures (not full acquisitions), reverse mergers, CRO/diagnostics-only acquisitions, Concentra-style cash-shell wind-downs.</p>
+          <p class="muted small">Script: <code>data/fetch_edgar_ma.py</code>. Intermediate output: <code>data/edgar_ma_pull.json</code> (67 biotech targets discovered).</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>IPOs — systematic SEC EDGAR pull (US) + hand-curated HKEX 18A</strong></summary>
+        <div class="body">
+          <p><strong>US biotech IPOs, no raise threshold, 2021–2026:</strong> sourced systematically by paginating SEC EDGAR for <strong>424B4</strong> (final prospectus) filings, then applying two filters:</p>
+          <ul>
+            <li><strong>SIC code filter:</strong> same biotech/pharma codes as above (2830, 2833, 2835, 2836, 8731).</li>
+            <li><strong>True-IPO filter</strong> (vs follow-on offering): company must have an S-1 registration on file, and the earliest 10-K must be after or within 6 months of the first 424B4.</li>
+          </ul>
+          <p>This catches every confirmed US listing — no judgment call about what's "worth including."</p>
+          <p><strong>HKEX Chapter 18A pre-revenue biotech listings:</strong> hand-curated from HKEXnews.hk.</p>
+          <p><strong>Excluded by scope:</strong> SPACs (S-4 mergers), direct listings, secondary/follow-on offerings.</p>
+          <p class="muted small">Script: <code>data/fetch_edgar_ipos.py</code>. Clinical detail (MOA, lead asset, phase) is populated for the ~57 originally-curated rows; the ~124 EDGAR-backfilled rows have ticker, raise, IPO date, and exchange but blank clinical fields — to be filled in over time.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><strong>Refresh cadence and known limits</strong></summary>
+        <div class="body">
+          <ul>
+            <li><strong>Latest close and market cap</strong> on the IPO page are approximate as of 2026-05-24, auto-refreshed weekly via yfinance through a GitHub Actions job (once deployed).</li>
+            <li><strong>Acquisition data</strong> from EDGAR will not catch private-target acquisitions, since private companies don't file SC 14D9 / DEFM14A. Those are still hand-added.</li>
+            <li><strong>HKEX 18A listings</strong> aren't covered by EDGAR — handled separately.</li>
+            <li><strong>Verify before citing in writing.</strong> Round numbers are used throughout to keep the table readable.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="footer">
+      Sources: SEC EDGAR (424B4, SC 14D9, DEFM14A), company 10-K filings, company pipeline pages, HKEXnews, Endpoints, FierceBiotech, BioPharma Dive. Methodology updated 2026-05-25.
+    </div>
+  </main>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    (async () => {
+      try {
+        const [pharma, ma, ipos] = await Promise.all([
+          loadJSON("data/pharma.json"),
+          loadJSON("data/ma.json"),
+          loadJSON("data/ipos.json")
+        ]);
+        document.getElementById("stat-pharma").textContent = pharma.companies.length;
+        document.getElementById("stat-ma").textContent = ma.deals.filter(d => d.deal_type !== "_skip").length;
+        document.getElementById("stat-ipos").textContent = ipos.ipos.filter(i => i.phase !== "skip").length;
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  </script>
+</body>
+</html>

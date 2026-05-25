@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code (machine-specific settings)
+.claude/
+
+# Python (for the EDGAR pull scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+
+# OneDrive sync artifacts
+.~lock.*
+~$*
+
+# Intermediate pulls — uncomment to ignore if you don't want them in the repo.
+# data/edgar_ipo_pull.json
+# data/edgar_ma_pull.json

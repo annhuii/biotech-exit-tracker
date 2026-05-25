@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech IPOs · Biotech Exit Tracker</title>
+  <link rel="stylesheet" href="styles/main.css?v=3" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Biotech Exit Tracker<span> · v1</span></div>
+    <nav>
+      <a href="index.html">Overview</a>
+      <a href="pipelines.html">Pharma Pipelines</a>
+      <a href="ma.html">M&amp;A Deals</a>
+      <a href="ipos.html">IPOs</a>
+    </nav>
+    <div class="updated">Updated 2026-05-24</div>
+  </header>
+
+  <main>
+    <h1>Biotech IPOs — 2021 to 2026</h1>
+    <p class="subtitle">All biotech/medicine IPOs 2021–2026 on NASDAQ/NYSE and HKEX 18A. No raise threshold — every confirmed listing included. Click any row for detail.</p>
+
+    <div class="method">
+      <strong>Caveats — read first:</strong>
+      <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+        <li><strong>US listings (NASDAQ/NYSE):</strong> sourced systematically from SEC EDGAR <code>424B4</code> (final prospectus) filings, filtered to biotech/pharma SIC codes 2830, 2833, 2835, 2836, 8731. True-IPO filter applied: company must have an S-1 on file, and earliest 10-K must be after or within 6 months of the first 424B4. See <a href="index.html">Overview → Methodology</a> for full details.</li>
+        <li><strong>HKEX Chapter 18A pre-revenue biotech listings:</strong> hand-curated from HKEXnews.hk — not automated.</li>
+        <li><strong>Excluded by scope:</strong> SPAC mergers (S-4), direct listings, secondary/follow-on offerings.</li>
+        <li><strong>Clinical detail (MOA, lead asset, phase, news)</strong> is populated for ~57 originally-curated entries. The ~124 EDGAR-backfilled rows have ticker, raise amount, IPO date, and exchange but blank clinical fields — to be filled in over time.</li>
+        <li><strong>Latest close and market cap</strong> are approximate as of 2026-05-24. A weekly GitHub Actions job (<code>scripts/refresh_ipos.py</code>) auto-refreshes these via yfinance once deployed.</li>
+        <li><strong>News column</strong> shows factual headlines only — no editorializing. Phase reflects most-advanced asset.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="filters">
+        <span class="label">Year</span>
+        <span class="chip active" data-filter="year" data-value="all">All</span>
+        <span class="chip" data-filter="year" data-value="2021">2021</span>
+        <span class="chip" data-filter="year" data-value="2022">2022</span>
+        <span class="chip" data-filter="year" data-value="2023">2023</span>
+        <span class="chip" data-filter="year" data-value="2024">2024</span>
+        <span class="chip" data-filter="year" data-value="2025">2025</span>
+        <span class="chip" data-filter="year" data-value="2026">2026</span>
+        <span class="label" style="margin-left: 12px;">Exchange</span>
+        <span class="chip active" data-filter="exch" data-value="all">All</span>
+        <span class="chip" data-filter="exch" data-value="US">US</span>
+        <span class="chip" data-filter="exch" data-value="HKEX">HKEX 18A</span>
+        <input type="text" class="chip-search" placeholder="Search ticker, asset, MOA…" id="search" />
+      </div>
+      <div id="ipo-stats" class="small muted" style="margin-bottom: 12px;"></div>
+      <table id="ipo-table">
+        <thead>
+          <tr>
+            <th data-sort="year">Year</th>
+            <th data-sort="ticker">Ticker</th>
+            <th data-sort="name">Company</th>
+            <th data-sort="exchange">Exch.</th>
+            <th data-sort="ipo_price" class="num">IPO $</th>
+            <th data-sort="ipo_raise" class="num">Raise</th>
+            <th data-sort="latest_close" class="num">Latest close</th>
+            <th data-sort="mcap_now" class="num">Mkt cap now</th>
+            <th data-sort="asset">Lead asset</th>
+            <th data-sort="phase">Phase</th>
+            <th data-sort="status">News</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      Sourced from SEC EDGAR 424B4 filings + HKEXnews. Verify before citing.
+    </div>
+  </main>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    let allIpos = [];
+    let yearFilter = "all";
+    let exchFilter = "all";
+    let searchTerm = "";
+
+    function render() {
+      const tbody = document.querySelector("#ipo-table tbody");
+      const filtered = allIpos.filter(d => {
+        if (d.phase === "skip") return false;
+        if (yearFilter !== "all" && String(d.year) !== yearFilter) return false;
+        if (exchFilter === "US" && !(d.exchange === "NASDAQ" || d.exchange === "NYSE")) return false;
+        if (exchFilter === "HKEX" && !d.exchange.includes("HKEX")) return false;
+        if (searchTerm) {
+          const t = searchTerm.toLowerCase();
+          const hay = `${d.ticker} ${d.name} ${d.lead_asset || ""} ${d.moa || ""} ${d.thesis || ""}`.toLowerCase();
+          if (!hay.includes(t)) return false;
+        }
+        return true;
+      });
+
+      const totalRaise = filtered.reduce((s, d) => s + (d.ipo_raise_usd_m || 0), 0);
+      const totalMcap = filtered.reduce((s, d) => s + (d.market_cap_now_usd_m || 0), 0);
+      document.getElementById("ipo-stats").textContent =
+        `${filtered.length} IPOs · ` +
+        `Total raised at IPO: $${(totalRaise / 1000).toFixed(1)}B · ` +
+        `Combined market cap now: $${(totalMcap / 1000).toFixed(1)}B · ` +
+        `${filtered.filter(d => d.china_origin).length} China-origin`;
+
+      tbody.innerHTML = filtered.map(d => {
+        const mcapStr = d.market_cap_now_usd_m
+          ? (d.market_cap_now_usd_m >= 1000
+              ? "$" + (d.market_cap_now_usd_m / 1000).toFixed(1) + "B"
+              : "$" + d.market_cap_now_usd_m + "M")
+          : "—";
+        const closeStr = (d.latest_close_usd !== null && d.latest_close_usd !== undefined)
+          ? "$" + d.latest_close_usd
+          : "—";
+        const phaseClass = d.status && d.status.toLowerCase().includes("acquired") ? "low" :
+                          d.status && (d.status.toLowerCase().includes("discontinued") || d.status.toLowerCase().includes("failed") || d.status.toLowerCase().includes("missed")) ? "high" : "";
+        return `
+        <tr>
+          <td>${d.year}</td>
+          <td><strong>${d.ticker}</strong></td>
+          <td>${d.name}${d.china_origin ? ' <span class="tag china">CN</span>' : ""}</td>
+          <td class="small">${d.exchange}</td>
+          <td class="num">${d.ipo_price_usd ? "$" + d.ipo_price_usd.toFixed(2) : "—"}</td>
+          <td class="num muted">${d.ipo_raise_usd_m ? "$" + d.ipo_raise_usd_m + "M" : "—"}</td>
+          <td class="num"><strong>${closeStr}</strong></td>
+          <td class="num">${mcapStr}</td>
+          <td class="small">${d.lead_asset || ""}</td>
+          <td><span class="tag ${phaseClass}">${d.phase || "—"}</span></td>
+          <td class="small muted" style="max-width: 280px;">${d.status || ""}</td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="11" style="padding: 0 12px 12px 12px;">
+          <div style="background: var(--line-soft); border-radius: 6px; padding: 12px 14px; margin-top: -4px;">
+            <div class="small"><strong>MOA:</strong> ${d.moa || "—"}</div>
+            <div class="small" style="margin-top: 6px;"><strong>Investment thesis:</strong> ${d.thesis || "—"}</div>
+          </div>
+        </td></tr>
+        `;
+      }).join("");
+
+      tbody.querySelectorAll("tr:not(.detail-row)").forEach(row => {
+        row.style.cursor = "pointer";
+        row.addEventListener("click", () => {
+          const next = row.nextElementSibling;
+          if (next && next.classList.contains("detail-row")) {
+            next.style.display = next.style.display === "none" ? "table-row" : "none";
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll(".chip[data-filter='year']").forEach(c => {
+      c.addEventListener("click", () => {
+        document.querySelectorAll(".chip[data-filter='year']").forEach(x => x.classList.remove("active"));
+        c.classList.add("active");
+        yearFilter = c.dataset.value;
+        render();
+      });
+    });
+    document.querySelectorAll(".chip[data-filter='exch']").forEach(c => {
+      c.addEventListener("click", () => {
+        document.querySelectorAll(".chip[data-filter='exch']").forEach(x => x.classList.remove("active"));
+        c.classList.add("active");
+        exchFilter = c.dataset.value;
+        render();
+      });
+    });
+    document.getElementById("search").addEventListener("input", (e) => {
+      searchTerm = e.target.value;
+      render();
+    });
+
+    (async () => {
+      const data = await loadJSON("data/ipos.json");
+      allIpos = data.ipos.slice().sort((a, b) => b.year - a.year);
+      render();
+
+      const keyMap = {
+        year: "year", ticker: "ticker", name: "name", exchange: "exchange",
+        ipo_price: "ipo_price_usd", ipo_raise: "ipo_raise_usd_m",
+        latest_close: "latest_close_usd", mcap_now: "market_cap_now_usd_m",
+        asset: "lead_asset", phase: "phase", status: "status"
+      };
+      const headers = document.querySelectorAll("#ipo-table thead th");
+      let sortDir = {};
+      headers.forEach(h => {
+        h.style.cursor = "pointer";
+        h.addEventListener("click", () => {
+          const key = h.dataset.sort;
+          sortDir[key] = !sortDir[key];
+          const dir = sortDir[key] ? 1 : -1;
+          allIpos.sort((a, b) => {
+            const va = a[keyMap[key]];
+            const vb = b[keyMap[key]];
+            if (typeof va === "number" && typeof vb === "number") return (va - vb) * dir;
+            if (typeof va === "number") return -1 * dir;
+            if (typeof vb === "number") return 1 * dir;
+            return String(va || "").localeCompare(String(vb || "")) * dir;
+          });
+          headers.forEach(x => x.classList.remove("sorted", "asc"));
+          h.classList.add("sorted");
+          if (sortDir[key]) h.classList.add("asc");
+          render();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

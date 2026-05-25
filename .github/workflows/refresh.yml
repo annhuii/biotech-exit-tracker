@@ -1,0 +1,51 @@
+name: Weekly data refresh
+
+on:
+  schedule:
+    # Mondays at 06:00 UTC = ~02:00 ET = post-weekend, pre-market
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Refresh market caps for IPOs
+        env:
+          # No paid API keys required — uses Yahoo Finance via yfinance.
+          # Add an Alpha Vantage / Polygon key here if you upgrade.
+          ALPHA_VANTAGE_KEY: ${{ secrets.ALPHA_VANTAGE_KEY }}
+        run: python scripts/refresh_ipos.py
+
+      - name: Refresh M&A deals from SEC EDGAR
+        run: python scripts/refresh_ma.py
+
+      - name: Update "as_of" date
+        run: python scripts/stamp_date.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
+            git commit -m "chore: weekly data refresh $(date +%Y-%m-%d)"
+            git push
+          else
+            echo "No data changes this week."
+          fi

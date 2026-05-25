@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>M&amp;A Deals · Biotech Exit Tracker</title>
+  <link rel="stylesheet" href="styles/main.css?v=3" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Biotech Exit Tracker<span> · v1</span></div>
+    <nav>
+      <a href="index.html">Overview</a>
+      <a href="pipelines.html">Pharma Pipelines</a>
+      <a href="ma.html">M&amp;A Deals</a>
+      <a href="ipos.html">IPOs</a>
+    </nav>
+    <div class="updated">Updated 2026-05-24</div>
+  </header>
+
+  <main>
+    <h1>Biotech M&amp;A, Licensing &amp; Partnerships — 2021 onward</h1>
+    <p class="subtitle">All dates are <strong>announcement dates</strong>. Deal structure summarizes economics; for public-target acquisitions it includes $/share offered and pre-announcement close. Click any row for MOA + pathophysiology.</p>
+
+    <div class="method">
+      <strong>Caveats — read first:</strong>
+      <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+        <li><strong>Acquisitions (US public targets, all sizes):</strong> sourced systematically from SEC EDGAR <code>SC 14D9</code> (target-filed tender offer recommendations) + <code>DEFM14A</code> (target-filed merger proxies), filtered to biotech/pharma SIC codes 2830, 2833, 2835, 2836, 8731. See <a href="index.html">Overview → Methodology</a> for full details. Backfilled May 2026 — earlier curation was incomplete.</li>
+        <li><strong>Licensing and Partnership+Equity deals:</strong> still hand-curated from trade press, ≥$500M headline threshold applies. Below-threshold licensing deals are not tracked here.</li>
+        <li><strong>Excluded by scope:</strong> SPAC business combinations, asset divestitures (not full company acquisitions), reverse mergers, CRO/diagnostics-only acquisitions, Concentra-style cash-shell wind-downs.</li>
+        <li><strong>Private-target acquisitions</strong> are <em>not</em> in the systematic pull (private companies don't file with SEC) — those rely on trade-press curation and may be incomplete.</li>
+        <li><strong>HKEX-listed targets</strong> are not in the EDGAR pull — handled separately.</li>
+        <li><strong>Headline value</strong> = max economic value to seller including milestones. For public targets, deal_structure includes $/share + premium %. Round numbers used; verify before citing.</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="filters">
+        <span class="label">Type</span>
+        <span class="chip active" data-filter="type" data-value="all">All</span>
+        <span class="chip" data-filter="type" data-value="Acquisition">Acquisition</span>
+        <span class="chip" data-filter="type" data-value="Licensing">Licensing</span>
+        <span class="chip" data-filter="type" data-value="Partnership+Equity">Partnership + Equity</span>
+        <span class="chip" data-filter="type" data-value="china">China-origin only</span>
+        <span class="label" style="margin-left: 12px;">Target</span>
+        <span class="chip active" data-filter="targ" data-value="all">All</span>
+        <span class="chip" data-filter="targ" data-value="public">Public</span>
+        <span class="chip" data-filter="targ" data-value="private">Private</span>
+        <span class="chip" data-filter="targ" data-value="biotech-licensor">Biotech licensor</span>
+        <input type="text" class="chip-search" placeholder="Search MOA, asset, indication…" id="search" />
+      </div>
+      <div id="ma-stats" class="small muted" style="margin-bottom: 12px;"></div>
+      <table id="ma-table">
+        <thead>
+          <tr>
+            <th data-sort="announce_date">Announced</th>
+            <th data-sort="acquirer">Acquirer</th>
+            <th data-sort="target">Target</th>
+            <th data-sort="target_status">Target type</th>
+            <th data-sort="deal_type">Deal type</th>
+            <th data-sort="headline_value_usd_b" class="num">Headline value</th>
+            <th data-sort="deal_structure">Deal structure</th>
+            <th data-sort="lead_asset">Lead asset</th>
+            <th data-sort="moa">MOA</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="footer">
+      Headline values are announcement-time figures including milestones (licensing) or equity value (acquisitions). For public targets, $/share offered + pre-deal unaffected close shown in deal structure where verified. <strong>Verify before citing</strong> against the company's own press release and any reputable pharma trade outlet.
+    </div>
+  </main>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    let allDeals = [];
+    let typeFilter = "all";
+    let targFilter = "all";
+    let searchTerm = "";
+
+    function formatDate(d) {
+      if (!d) return "";
+      const parts = d.split("-");
+      if (parts.length < 2) return d;
+      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      return `${months[parseInt(parts[1])-1]} ${parts[0]}`;
+    }
+
+    function targStatusTag(status) {
+      if (status === "public") return '<span class="tag low">Public</span>';
+      if (status === "private") return '<span class="tag">Private</span>';
+      if (status === "biotech-licensor") return '<span class="tag licensing">Licensor</span>';
+      return '<span class="tag muted">—</span>';
+    }
+
+    function dealTypeTag(t) {
+      if (t === "Acquisition") return '<span class="tag">M&A</span>';
+      if (t === "Licensing") return '<span class="tag licensing">License</span>';
+      if (t === "Partnership+Equity") return '<span class="tag high">Partner+Eq</span>';
+      return `<span class="tag">${t}</span>`;
+    }
+
+    function render() {
+      const tbody = document.querySelector("#ma-table tbody");
+      const filtered = allDeals.filter(d => {
+        if (typeFilter === "Acquisition" && d.deal_type !== "Acquisition") return false;
+        if (typeFilter === "Licensing" && d.deal_type !== "Licensing") return false;
+        if (typeFilter === "Partnership+Equity" && d.deal_type !== "Partnership+Equity") return false;
+        if (typeFilter === "china" && !d.china_origin) return false;
+        if (targFilter !== "all" && d.target_status !== targFilter) return false;
+        if (searchTerm) {
+          const t = searchTerm.toLowerCase();
+          const hay = `${d.acquirer} ${d.target} ${d.lead_asset} ${d.moa} ${d.indication} ${d.deal_structure || ""} ${d.pathophysiology || ""} ${d.rationale || ""}`.toLowerCase();
+          if (!hay.includes(t)) return false;
+        }
+        return true;
+      });
+
+      document.getElementById("ma-stats").textContent =
+        `${filtered.length} deals · ` +
+        `${filtered.filter(d => d.deal_type === "Acquisition").length} M&A · ` +
+        `${filtered.filter(d => d.deal_type === "Licensing").length} licensing · ` +
+        `${filtered.filter(d => d.deal_type === "Partnership+Equity").length} partnership+equity · ` +
+        `${filtered.filter(d => d.china_origin).length} China-origin · ` +
+        `Total headline value: $${filtered.reduce((s, d) => s + (d.headline_value_usd_b || 0), 0).toFixed(1)}B`;
+
+      tbody.innerHTML = filtered.map(d => `
+        <tr>
+          <td class="small" style="white-space:nowrap;">${formatDate(d.announce_date)}</td>
+          <td><strong>${d.acquirer}</strong></td>
+          <td>${d.target}${d.china_origin ? ' <span class="tag china">CN</span>' : ""}</td>
+          <td>${targStatusTag(d.target_status)}</td>
+          <td>${dealTypeTag(d.deal_type)}</td>
+          <td class="num"><strong>$${d.headline_value_usd_b.toFixed(2)}B</strong></td>
+          <td class="small" style="max-width: 380px;">${d.deal_structure || ""}</td>
+          <td class="small">${d.lead_asset}</td>
+          <td class="small muted">${d.moa}</td>
+        </tr>
+        <tr class="detail-row" style="display:none;"><td colspan="9" style="padding: 0 12px 12px 12px;">
+          <div style="background: var(--line-soft); border-radius: 6px; padding: 12px 14px; margin-top: -4px;">
+            <div class="small"><strong>Indication:</strong> ${d.indication || "—"}</div>
+            <div class="small" style="margin-top: 6px;"><strong>Pathophysiology:</strong> ${d.pathophysiology || "—"}</div>
+            <div class="small" style="margin-top: 6px;"><strong>Rationale:</strong> ${d.rationale || "—"}</div>
+          </div>
+        </td></tr>
+      `).join("");
+
+      tbody.querySelectorAll("tr:not(.detail-row)").forEach(row => {
+        row.style.cursor = "pointer";
+        row.addEventListener("click", () => {
+          const next = row.nextElementSibling;
+          if (next && next.classList.contains("detail-row")) {
+            next.style.display = next.style.display === "none" ? "table-row" : "none";
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll(".chip[data-filter='type']").forEach(c => {
+      c.addEventListener("click", () => {
+        document.querySelectorAll(".chip[data-filter='type']").forEach(x => x.classList.remove("active"));
+        c.classList.add("active");
+        typeFilter = c.dataset.value;
+        render();
+      });
+    });
+    document.querySelectorAll(".chip[data-filter='targ']").forEach(c => {
+      c.addEventListener("click", () => {
+        document.querySelectorAll(".chip[data-filter='targ']").forEach(x => x.classList.remove("active"));
+        c.classList.add("active");
+        targFilter = c.dataset.value;
+        render();
+      });
+    });
+    document.getElementById("search").addEventListener("input", (e) => {
+      searchTerm = e.target.value;
+      render();
+    });
+
+    (async () => {
+      const data = await loadJSON("data/ma.json");
+      allDeals = data.deals.slice().sort((a, b) => (b.announce_date || "").localeCompare(a.announce_date || ""));
+      render();
+
+      // Sortable
+      const headers = document.querySelectorAll("#ma-table thead th");
+      let sortDir = {};
+      headers.forEach(h => {
+        h.style.cursor = "pointer";
+        h.addEventListener("click", () => {
+          const key = h.dataset.sort;
+          sortDir[key] = !sortDir[key];
+          const dir = sortDir[key] ? 1 : -1;
+          allDeals.sort((a, b) => {
+            const va = a[key];
+            const vb = b[key];
+            if (typeof va === "number" && typeof vb === "number") return (va - vb) * dir;
+            return String(va || "").localeCompare(String(vb || "")) * dir;
+          });
+          headers.forEach(x => x.classList.remove("sorted", "asc"));
+          h.classList.add("sorted");
+          if (sortDir[key]) h.classList.add("asc");
+          render();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

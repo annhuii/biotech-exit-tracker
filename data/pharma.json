@@ -1,0 +1,236 @@
+{
+  "as_of": "2026-05-24",
+  "data_caveats": "Revenue figures are approximate FY2024 prescription drug sales by therapeutic area, in USD billions. Sources: company 10-K segment reporting, Q4 earnings calls, analyst aggregations. Boehringer is private (estimates only). Patent cliff dates are US composition / biologic exclusivity unless noted. Pipeline counts are taken from each company's published pipeline page or most recent R&D day — verify against the company's own site before citing in writing. Round numbers throughout — meant to inform discussion, not to be precision figures.",
+  "ta_legend": {
+    "ONC": "Oncology",
+    "IMM": "Immunology / Inflammation",
+    "NEU": "Neuroscience (incl. neuromuscular, psychiatric, neuro-rare per industry convention)",
+    "CVR": "Cardiovascular / Renal",
+    "END": "Endocrinology / Metabolic (diabetes, obesity, growth, thyroid, mineral metabolism)",
+    "RAR": "Rare disease",
+    "VAC": "Vaccines",
+    "RES": "Respiratory",
+    "OPH": "Ophthalmology",
+    "ID": "Infectious disease (incl. HIV)",
+    "HEM": "Hematology (non-onc — hemophilia, ITP, MPN)",
+    "GI": "Gastrointestinal",
+    "AES": "Aesthetics"
+  },
+  "companies": [
+    {
+      "rank": 1, "name": "Pfizer", "ticker": "PFE", "rx_rev_2024_usd_b": 58.5,
+      "pipeline_counts": {"total": 108, "late": 30, "early": 78, "source": "Pfizer 2024 R&D Day"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 14, "drug": "Ibrance + Padcev + Xtandi + Adcetris (Seagen portfolio)", "cliff": "Ibrance Jan 2027 US; Xtandi Aug 2027 US", "indication": "HR+ breast; urothelial; prostate; lymphoma", "moa": "CDK4/6 (Ibrance); Nectin-4 ADC (Padcev); AR (Xtandi); CD30 ADC (Adcetris)"},
+        "VAC":  {"rev_b": 8.5, "drug": "Prevnar 20", "cliff": "Long runway (biologic exclusivity to ~2032)", "indication": "Pneumococcal disease prevention", "moa": "20-valent conjugate vaccine"},
+        "CVR":  {"rev_b": 7.5, "drug": "Eliquis (Pfizer share, w/ BMS)", "cliff": "Apr 2028 US", "indication": "Atrial fibrillation, VTE prevention", "moa": "Direct factor Xa inhibitor"},
+        "RAR":  {"rev_b": 5.5, "drug": "Vyndaqel / Vyndamax (tafamidis)", "cliff": "Dec 2028 US", "indication": "Transthyretin amyloid cardiomyopathy (ATTR-CM)", "moa": "TTR tetramer stabilizer"},
+        "ID":   {"rev_b": 5,  "drug": "Paxlovid (declining)", "cliff": "N/A — small molecule, COVID-driven", "indication": "COVID-19 treatment", "moa": "SARS-CoV-2 main protease (Mpro) inhibitor + ritonavir"},
+        "NEU":  {"rev_b": 1.2, "drug": "Nurtec ODT / Vydura (rimegepant)", "cliff": "Apr 2030 US", "indication": "Migraine acute + prevention", "moa": "Oral CGRP receptor antagonist"},
+        "IMM":  {"rev_b": 1.0, "drug": "Xeljanz (tofacitinib)", "cliff": "Dec 2025 US (already exposed)", "indication": "RA, PsA, UC, ankylosing spondylitis", "moa": "Pan-JAK inhibitor"}
+      }
+    },
+    {
+      "rank": 2, "name": "Johnson & Johnson (Innovative Medicine)", "ticker": "JNJ", "rx_rev_2024_usd_b": 57.0,
+      "pipeline_counts": {"total": 75, "late": 25, "early": 50, "source": "JNJ Innovative Medicine pipeline page 2024"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 22, "drug": "Darzalex (daratumumab) + Erleada + Imbruvica + Carvykti", "cliff": "Darzalex SubQ 2030 US; Imbruvica 2027 US; Erleada 2032 US", "indication": "Multiple myeloma; prostate; CLL; BCMA+ MM", "moa": "Anti-CD38 (Darzalex); AR (Erleada); BTK (Imbruvica); BCMA CAR-T (Carvykti)"},
+        "IMM":  {"rev_b": 16, "drug": "Stelara (declining w/ biosim) + Tremfya + Rybrevant", "cliff": "Stelara biosim launched 2024-25; Tremfya 2030+ US", "indication": "Psoriasis, IBD, PsA; EGFR+ NSCLC (Rybrevant)", "moa": "Anti-IL-12/23 p40 (Stelara); anti-IL-23 p19 (Tremfya); EGFR x MET (Rybrevant)"},
+        "NEU":  {"rev_b": 7, "drug": "Spravato (esketamine) + Caplyta (post-Intra-Cellular)", "cliff": "Spravato 2030+ US; Caplyta 2034+ US", "indication": "Treatment-resistant MDD; schizophrenia, bipolar depression", "moa": "NMDA antagonist (Spravato); 5-HT2A/D2/SERT (Caplyta)"},
+        "CVR":  {"rev_b": 3, "drug": "Xarelto (rivaroxaban, US share)", "cliff": "May 2027 US", "indication": "AFib, VTE prevention", "moa": "Direct factor Xa inhibitor"},
+        "ID":   {"rev_b": 1.5, "drug": "Edurant + Prezista (HIV) + Symtuza", "cliff": "Various 2025-2028", "indication": "HIV", "moa": "NNRTI (Edurant); PI (Prezista)"},
+        "HEM":  {"rev_b": 0.5, "drug": "Imbruvica overlap (in ONC)", "cliff": "—", "indication": "—", "moa": "—"}
+      }
+    },
+    {
+      "rank": 3, "name": "Roche", "ticker": "ROG.SW", "rx_rev_2024_usd_b": 51.5,
+      "pipeline_counts": {"total": 80, "late": 30, "early": 50, "source": "Roche 2024 pipeline page"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 20, "drug": "Phesgo / Perjeta + Tecentriq + Polivy + Kadcyla + biosimilar-impacted Avastin/Herceptin", "cliff": "Perjeta 2025 US (biosim); Tecentriq 2028+", "indication": "HER2+ breast; multiple solid tumors; DLBCL", "moa": "HER2 mAb combos (Phesgo); anti-PD-L1 (Tecentriq); CD79b ADC (Polivy)"},
+        "NEU":  {"rev_b": 8, "drug": "Ocrevus (ocrelizumab) + Evrysdi", "cliff": "Ocrevus 2029+ US; Evrysdi 2030+ US", "indication": "Multiple sclerosis (RRMS+PPMS); spinal muscular atrophy", "moa": "Anti-CD20 mAb (Ocrevus); SMN2 splicing modifier (Evrysdi)"},
+        "HEM":  {"rev_b": 5, "drug": "Hemlibra (emicizumab)", "cliff": "Mar 2031 US", "indication": "Hemophilia A (incl. inhibitor patients)", "moa": "FIXa x FX bispecific (factor VIII mimetic)"},
+        "OPH":  {"rev_b": 4.5, "drug": "Vabysmo (faricimab)", "cliff": "2032+ US", "indication": "Wet AMD, DME, RVO", "moa": "Ang-2 x VEGF-A bispecific"},
+        "IMM":  {"rev_b": 4, "drug": "Actemra (tocilizumab) + Xolair (Roche-Novartis collab)", "cliff": "Actemra biosim 2023+ (impact ongoing)", "indication": "RA, GCA, COVID; severe allergic asthma", "moa": "Anti-IL-6R (Actemra); anti-IgE (Xolair)"},
+        "ID":   {"rev_b": 1, "drug": "Xofluza + HIV legacy", "cliff": "Xofluza ~2030", "indication": "Influenza", "moa": "Cap-dependent endonuclease inhibitor (Xofluza)"}
+      }
+    },
+    {
+      "rank": 4, "name": "AbbVie", "ticker": "ABBV", "rx_rev_2024_usd_b": 49.6,
+      "pipeline_counts": {"total": 75, "late": 20, "early": 55, "source": "AbbVie 2024 pipeline page"},
+      "revenue_by_ta": {
+        "IMM":  {"rev_b": 26, "drug": "Skyrizi + Rinvoq (replacing Humira)", "cliff": "Skyrizi ~2033 US; Rinvoq ~2033 US; Humira already off-patent", "indication": "Psoriasis, PsA, IBD, atopic dermatitis, RA, axSpA", "moa": "Anti-IL-23 p19 (Skyrizi); selective JAK1 (Rinvoq)"},
+        "NEU":  {"rev_b": 8.5, "drug": "Vraylar (cariprazine) + Botox Therapeutic + Ubrelvy + Qulipta", "cliff": "Vraylar 2029 US; Botox biosim already entering", "indication": "Schizophrenia, bipolar; chronic migraine; acute + preventive migraine", "moa": "D2/D3 partial agonist (Vraylar); BoNT-A (Botox); CGRP antagonist (Ubrelvy/Qulipta)"},
+        "ONC":  {"rev_b": 6.5, "drug": "Imbruvica + Venclexta + Elahere", "cliff": "Imbruvica 2027 US; Venclexta 2027 US; Elahere 2034+ US", "indication": "CLL, MM (Imbruvica/Venclexta); FRα+ ovarian (Elahere)", "moa": "BTK (Imbruvica); BCL-2 (Venclexta); FRα ADC (Elahere)"},
+        "AES":  {"rev_b": 5, "drug": "Botox Cosmetic + Juvederm", "cliff": "Botox biosim entering; Juvederm long runway", "indication": "Aesthetic facial use", "moa": "BoNT-A; hyaluronic acid fillers"},
+        "ID":   {"rev_b": 1.4, "drug": "Mavyret (glecaprevir/pibrentasvir)", "cliff": "2027 US", "indication": "Chronic hepatitis C", "moa": "NS3/4A PI + NS5A inhibitor"},
+        "GI":   {"rev_b": 1.2, "drug": "Linzess (linaclotide)", "cliff": "2026 US", "indication": "IBS-C, CIC", "moa": "Guanylate cyclase-C agonist"}
+      }
+    },
+    {
+      "rank": 5, "name": "Merck & Co.", "ticker": "MRK", "rx_rev_2024_usd_b": 56.0,
+      "pipeline_counts": {"total": 80, "late": 25, "early": 55, "source": "Merck 2024 pipeline page"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 30, "drug": "Keytruda (pembrolizumab)", "cliff": "Aug 2028 US (biologic exclusivity)", "indication": "NSCLC, melanoma, HNSCC, MSI-H, gastric, RCC, TNBC, ~30 approved indications", "moa": "Anti-PD-1 mAb"},
+        "VAC":  {"rev_b": 11, "drug": "Gardasil 9 + Pneumovax + ProQuad", "cliff": "Gardasil 9 ~2028; Pneumovax long runway", "indication": "HPV; pneumococcal; MMR-V", "moa": "9-valent HPV VLP (Gardasil); 23-valent polysaccharide (Pneumovax)"},
+        "RAR":  {"rev_b": 1.2, "drug": "Winrevair (sotatercept, ex-Acceleron) + Adempas + Verquvo", "cliff": "Winrevair 2034+ US", "indication": "Pulmonary arterial hypertension; CTEPH (Adempas); HFrEF (Verquvo)", "moa": "Activin/GDF trap (Winrevair); sGC stimulator (Adempas, Verquvo)"},
+        "END":  {"rev_b": 2, "drug": "Januvia / Janumet (sitagliptin) — declining post-LOE", "cliff": "Jul 2026 US (lost exclusivity)", "indication": "Type 2 diabetes", "moa": "DPP-4 inhibitor"},
+        "ID":   {"rev_b": 1, "drug": "Lagevrio (molnupiravir, declining) + HIV legacy + antifungals", "cliff": "Various", "indication": "COVID; HIV; fungal", "moa": "RdRp ribonucleoside (Lagevrio)"},
+        "IMM":  {"rev_b": 0.5, "drug": "Welireg (belzutifan)", "cliff": "2033+ US", "indication": "VHL-associated tumors; advanced ccRCC", "moa": "HIF-2α inhibitor"}
+      }
+    },
+    {
+      "rank": 6, "name": "AstraZeneca", "ticker": "AZN", "rx_rev_2024_usd_b": 54.0,
+      "pipeline_counts": {"total": 180, "late": 50, "early": 130, "source": "AZ 2024 pipeline disclosures"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 22, "drug": "Tagrisso (osimertinib) + Imfinzi + Lynparza + Enhertu (w/ Daiichi) + Calquence", "cliff": "Tagrisso May 2028 US; Imfinzi 2030+ US; Lynparza 2028 US; Enhertu 2034+ US; Calquence 2030 US", "indication": "EGFR-mut NSCLC (Tagrisso); broad PD-L1 across tumors (Imfinzi); BRCA+ ovarian/breast (Lynparza); HER2+ breast/gastric (Enhertu); CLL/MCL (Calquence)", "moa": "EGFR TKI; anti-PD-L1; PARP; HER2 ADC; BTK"},
+        "CVR":  {"rev_b": 8, "drug": "Farxiga (dapagliflozin)", "cliff": "Apr 2028 US", "indication": "T2D, HFrEF, HFpEF, CKD", "moa": "SGLT2 inhibitor"},
+        "RAR":  {"rev_b": 9, "drug": "Soliris + Ultomiris (ex-Alexion) + Strensiq", "cliff": "Soliris biosim launching 2025; Ultomiris 2027-28 US", "indication": "PNH, aHUS, gMG, NMOSD; hypophosphatasia", "moa": "Anti-C5 complement; recombinant alkaline phosphatase"},
+        "RES":  {"rev_b": 7, "drug": "Symbicort + Fasenra + Tezspire (w/ Amgen) + Airsupra", "cliff": "Symbicort generics already; Fasenra 2026+ US; Tezspire 2031+ US", "indication": "Asthma, COPD; severe eosinophilic asthma; severe asthma (Tezspire)", "moa": "ICS+LABA (Symbicort); anti-IL-5R (Fasenra); anti-TSLP (Tezspire)"},
+        "ID":   {"rev_b": 1.5, "drug": "Beyfortus (w/ Sanofi)", "cliff": "2032+ US", "indication": "RSV prophylaxis (infants)", "moa": "Long-acting anti-RSV F mAb"},
+        "IMM":  {"rev_b": 0.8, "drug": "Saphnelo (anifrolumab)", "cliff": "2032+ US", "indication": "Systemic lupus erythematosus", "moa": "Anti-IFNAR1 mAb"}
+      }
+    },
+    {
+      "rank": 7, "name": "Eli Lilly", "ticker": "LLY", "rx_rev_2024_usd_b": 45.0,
+      "pipeline_counts": {"total": 70, "late": 25, "early": 45, "source": "Lilly 2024 pipeline page"},
+      "revenue_by_ta": {
+        "END":  {"rev_b": 25, "drug": "Mounjaro + Zepbound (tirzepatide) + Trulicity (declining)", "cliff": "Tirzepatide 2036 US; Trulicity 2027 US", "indication": "T2D (Mounjaro); chronic weight management (Zepbound); T2D (Trulicity)", "moa": "GIP/GLP-1 dual (tirzepatide); GLP-1 (Trulicity)"},
+        "ONC":  {"rev_b": 8, "drug": "Verzenio (abemaciclib) + Jaypirca + Retsevmo + Cyramza", "cliff": "Verzenio 2030 US; Jaypirca 2034+ US", "indication": "HR+/HER2- breast; relapsed/refractory MCL; RET+ tumors", "moa": "CDK4/6 (Verzenio); non-covalent BTK (Jaypirca); RET (Retsevmo)"},
+        "IMM":  {"rev_b": 4, "drug": "Taltz (ixekizumab) + Olumiant + Ebglyss + Omvoh", "cliff": "Taltz 2029 US; Olumiant biosim entering", "indication": "Psoriasis, PsA, axSpA (Taltz); atopic dermatitis (Ebglyss); UC (Omvoh)", "moa": "Anti-IL-17A (Taltz); JAK1/2 (Olumiant); anti-IL-13 (Ebglyss); anti-IL-23 p19 (Omvoh)"},
+        "NEU":  {"rev_b": 0.4, "drug": "Kisunla (donanemab) — newly launched", "cliff": "2034+ US", "indication": "Early symptomatic Alzheimer's", "moa": "Anti-pyroglutamate-amyloid-beta mAb"}
+      }
+    },
+    {
+      "rank": 8, "name": "Novartis", "ticker": "NVS", "rx_rev_2024_usd_b": 44.8,
+      "pipeline_counts": {"total": 150, "late": 40, "early": 110, "source": "Novartis 2024 R&D Day"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 17, "drug": "Kisqali (ribociclib) + Pluvicto + Scemblix + Tafinlar/Mekinist + Jakavi (ex-US)", "cliff": "Kisqali 2031 US; Pluvicto 2032+ US; Scemblix 2034+ US; Tafinlar 2027 US", "indication": "HR+ breast; PSMA+ mCRPC; chronic-phase CML; BRAF V600E melanoma; MF (Jakavi)", "moa": "CDK4/6; PSMA Lu-177 RLT; allosteric BCR-ABL (STAMP); BRAF+MEK; JAK1/2 (Jakavi)"},
+        "CVR":  {"rev_b": 10, "drug": "Entresto (sacubitril/valsartan) + Leqvio (inclisiran)", "cliff": "Entresto core comp expired 2025; new patents to 2026-27; Leqvio 2034+ US", "indication": "HFrEF, HFpEF (Entresto); ASCVD secondary prevention (Leqvio)", "moa": "ARNI (Entresto); PCSK9 siRNA (Leqvio)"},
+        "IMM":  {"rev_b": 6, "drug": "Cosentyx (secukinumab)", "cliff": "Oct 2029 US", "indication": "Psoriasis, PsA, axSpA, HS", "moa": "Anti-IL-17A mAb"},
+        "NEU":  {"rev_b": 5, "drug": "Kesimpta (ofatumumab) + Mayzent + Zolgensma", "cliff": "Kesimpta 2030+ US; Zolgensma rare-disease long runway", "indication": "Relapsing MS; SMA (Zolgensma)", "moa": "Anti-CD20 SubQ (Kesimpta); S1PR modulator (Mayzent); AAV9-SMN1 gene therapy (Zolgensma)"},
+        "RAR":  {"rev_b": 2, "drug": "Zolgensma + Adakveo (withdrawn EU) + Ilaris", "cliff": "Various", "indication": "SMA; sickle cell; CAPS", "moa": "Gene therapy; anti-P-selectin; anti-IL-1β"},
+        "OPH":  {"rev_b": 1, "drug": "Lucentis (declining post-biosim) + Beovu", "cliff": "Lucentis biosim in market; Beovu 2030+ US", "indication": "Wet AMD, DME", "moa": "Anti-VEGF Fab (Lucentis); anti-VEGF (Beovu)"}
+      }
+    },
+    {
+      "rank": 9, "name": "Sanofi", "ticker": "SNY", "rx_rev_2024_usd_b": 47.0,
+      "pipeline_counts": {"total": 85, "late": 25, "early": 60, "source": "Sanofi 2024 pipeline page"},
+      "revenue_by_ta": {
+        "IMM":  {"rev_b": 14, "drug": "Dupixent (dupilumab, w/ Regeneron — Sanofi share)", "cliff": "2030+ US (biologic exclusivity)", "indication": "Atopic dermatitis, asthma, EoE, prurigo nodularis, COPD, CRSwNP", "moa": "Anti-IL-4Rα mAb (blocks IL-4 + IL-13)"},
+        "VAC":  {"rev_b": 7, "drug": "Fluzone + Menactra + Beyfortus (w/ AZ) + Vaxelis", "cliff": "Vaccines generally long runway", "indication": "Influenza; meningococcal; RSV (Beyfortus); pediatric hexavalent", "moa": "Various inactivated/conjugate vaccines"},
+        "RAR":  {"rev_b": 4, "drug": "Pompe franchise (Lumizyme, Nexviazyme) + Cerezyme + Fabrazyme + Tzield (post-Provention)", "cliff": "Various — most biosim-exposed in late 2020s", "indication": "Pompe disease; Gaucher; Fabry; T1D delay", "moa": "Recombinant enzyme replacement; anti-CD3 (Tzield)"},
+        "END":  {"rev_b": 2.5, "drug": "Lantus (insulin glargine, declining)", "cliff": "Already off-patent — biosim competition", "indication": "Type 1, Type 2 diabetes", "moa": "Long-acting insulin analog"},
+        "NEU":  {"rev_b": 1, "drug": "Aubagio (declining post-LOE) + Tolebrutinib (filed)", "cliff": "Aubagio off-patent 2023", "indication": "Relapsing MS; non-relapsing SPMS (tolebrutinib)", "moa": "DHODH inhibitor (Aubagio); BTK (tolebrutinib)"},
+        "ONC":  {"rev_b": 1, "drug": "Sarclisa (isatuximab) + Jevtana", "cliff": "Sarclisa 2032+ US; Jevtana off-patent", "indication": "Multiple myeloma; mCRPC (Jevtana)", "moa": "Anti-CD38 mAb; microtubule inhibitor"}
+      }
+    },
+    {
+      "rank": 10, "name": "Bristol Myers Squibb", "ticker": "BMY", "rx_rev_2024_usd_b": 48.3,
+      "pipeline_counts": {"total": 60, "late": 20, "early": 40, "source": "BMS 2024 pipeline page"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 25, "drug": "Opdivo (nivolumab) + Yervoy + Reblozyl + Abecma + Breyanzi + Augtyro + Krazati", "cliff": "Opdivo Dec 2028 US; Yervoy 2027 US; Reblozyl 2031 US", "indication": "Melanoma, NSCLC, RCC, gastric, CRC, MSI-H, HCC, esophageal, ovarian", "moa": "Anti-PD-1 (Opdivo); anti-CTLA-4 (Yervoy); activin trap (Reblozyl); BCMA CAR-T (Abecma); CD19 CAR-T (Breyanzi); ROS1/TRK (Augtyro); KRAS G12C (Krazati)"},
+        "CVR":  {"rev_b": 14, "drug": "Eliquis (apixaban) + Camzyos (mavacamten)", "cliff": "Eliquis Apr 2028 US; Camzyos 2034+ US", "indication": "AFib, VTE; obstructive hypertrophic cardiomyopathy (Camzyos)", "moa": "Direct factor Xa (Eliquis); cardiac myosin inhibitor (Camzyos)"},
+        "IMM":  {"rev_b": 4.5, "drug": "Orencia (abatacept) + Sotyktu + Zeposia", "cliff": "Orencia 2027 US; Sotyktu 2033+ US", "indication": "RA, PsA, JIA; psoriasis; UC, MS", "moa": "CTLA-4-Ig fusion; allosteric TYK2 (Sotyktu); S1P modulator (Zeposia)"},
+        "NEU":  {"rev_b": 0.2, "drug": "Cobenfy (xanomeline-trospium, post-Karuna)", "cliff": "2037+ US", "indication": "Schizophrenia (approved 2024)", "moa": "M1/M4 muscarinic agonist + peripheral anticholinergic"}
+      }
+    },
+    {
+      "rank": 11, "name": "Novo Nordisk", "ticker": "NVO", "rx_rev_2024_usd_b": 42.0,
+      "pipeline_counts": {"total": 30, "late": 10, "early": 20, "source": "Novo Nordisk 2024 pipeline"},
+      "revenue_by_ta": {
+        "END":  {"rev_b": 39, "drug": "Ozempic + Wegovy (semaglutide) + Rybelsus + insulin franchise", "cliff": "Semaglutide composition 2031 US, 2032 EU; insulins various", "indication": "T2D (Ozempic); chronic weight management (Wegovy); oral T2D (Rybelsus); diabetes (insulins)", "moa": "GLP-1 agonist (semaglutide); insulin analogs"},
+        "HEM":  {"rev_b": 1.5, "drug": "NovoSeven + NovoEight + Refixia + Esperoct", "cliff": "Various 2025-2030", "indication": "Hemophilia A and B (incl. inhibitor patients)", "moa": "Recombinant factor VIIa, VIII, IX"},
+        "RAR":  {"rev_b": 1.5, "drug": "Sogroya (somapacitan) + Norditropin", "cliff": "Norditropin long runway", "indication": "Growth hormone deficiency", "moa": "Long-acting hGH"}
+      }
+    },
+    {
+      "rank": 12, "name": "GSK", "ticker": "GSK", "rx_rev_2024_usd_b": 38.5,
+      "pipeline_counts": {"total": 70, "late": 20, "early": 50, "source": "GSK 2024 pipeline page"},
+      "revenue_by_ta": {
+        "VAC":  {"rev_b": 11, "drug": "Shingrix (zoster) + Arexvy (RSV) + Boostrix + Bexsero + Menveo", "cliff": "Shingrix 2032+ US; Arexvy 2032+ US", "indication": "Herpes zoster; RSV in adults 60+; pertussis; meningococcal", "moa": "Recombinant gE + AS01 adjuvant (Shingrix); RSV preF + AS01 (Arexvy)"},
+        "ID":   {"rev_b": 7.5, "drug": "Dovato + Cabenuva (long-acting HIV)", "cliff": "Dovato 2029 US; Cabenuva 2030+ US", "indication": "HIV maintenance; HIV LA injectable", "moa": "Integrase + NRTI (Dovato); LA cabotegravir + rilpivirine (Cabenuva)"},
+        "RES":  {"rev_b": 7, "drug": "Trelegy Ellipta + Nucala + Anoro + Breo", "cliff": "Trelegy 2030 US; Nucala 2026+ US", "indication": "COPD, asthma (Trelegy); severe eosinophilic asthma (Nucala)", "moa": "ICS+LABA+LAMA (Trelegy); anti-IL-5 (Nucala)"},
+        "ONC":  {"rev_b": 1.2, "drug": "Jemperli (dostarlimab) + Ojjaara + Zejula (declining)", "cliff": "Jemperli 2034+ US; Ojjaara 2034+ US", "indication": "MMRd endometrial; myelofibrosis (Ojjaara); ovarian (Zejula)", "moa": "Anti-PD-1 (Jemperli); JAK1/2+ACVR1 (Ojjaara); PARP (Zejula)"},
+        "IMM":  {"rev_b": 0.8, "drug": "Benlysta (belimumab)", "cliff": "2030+ US", "indication": "Systemic lupus erythematosus, lupus nephritis", "moa": "Anti-BLyS/BAFF mAb"}
+      }
+    },
+    {
+      "rank": 13, "name": "Takeda", "ticker": "TAK", "rx_rev_2024_usd_b": 30.3,
+      "pipeline_counts": {"total": 30, "late": 10, "early": 20, "source": "Takeda 2024 pipeline page"},
+      "revenue_by_ta": {
+        "GI":   {"rev_b": 6.5, "drug": "Entyvio (vedolizumab)", "cliff": "2026 US (biosim launching late 2020s)", "indication": "UC, Crohn's disease", "moa": "Gut-selective α4β7 integrin mAb"},
+        "HEM":  {"rev_b": 4, "drug": "Advate + Adynovate + Recombinate (plasma-derived hemophilia)", "cliff": "Various — competition from Hemlibra", "indication": "Hemophilia A", "moa": "Recombinant factor VIII"},
+        "ONC":  {"rev_b": 5, "drug": "Iclusig + Ninlaro + Adcetris (royalty) + Fruzaqla", "cliff": "Iclusig 2026 US; Ninlaro 2027 US", "indication": "Resistant CML; relapsed/refractory MM; relapsed mCRC (Fruzaqla)", "moa": "Multi-kinase BCR-ABL (Iclusig); proteasome (Ninlaro); VEGFR (Fruzaqla)"},
+        "RAR":  {"rev_b": 5, "drug": "Takhzyro (lanadelumab) + Gattex + Natpara legacy", "cliff": "Takhzyro 2030+ US", "indication": "Hereditary angioedema prophylaxis; short bowel syndrome", "moa": "Anti-plasma kallikrein mAb (Takhzyro); GLP-2 analog (Gattex)"},
+        "NEU":  {"rev_b": 3, "drug": "Vyvanse (declining post-LOE) + Trintellix", "cliff": "Vyvanse already off-patent 2023; Trintellix 2026 US", "indication": "ADHD (Vyvanse); MDD (Trintellix)", "moa": "Stimulant prodrug; multimodal 5-HT modulator"},
+        "ID":   {"rev_b": 1.5, "drug": "Qdenga (dengue vaccine)", "cliff": "2034+ exclusivity", "indication": "Dengue prevention", "moa": "Live-attenuated tetravalent dengue vaccine"}
+      }
+    },
+    {
+      "rank": 14, "name": "Amgen", "ticker": "AMGN", "rx_rev_2024_usd_b": 33.4,
+      "pipeline_counts": {"total": 30, "late": 10, "early": 20, "source": "Amgen 2024 pipeline page"},
+      "revenue_by_ta": {
+        "IMM":  {"rev_b": 8, "drug": "Tepezza (post-Horizon) + Otezla + Enbrel (declining)", "cliff": "Tepezza 2030+ US; Otezla 2028 US; Enbrel already exposed", "indication": "Thyroid eye disease; psoriasis, PsA; RA, psoriasis", "moa": "Anti-IGF-1R (Tepezza); PDE4 (Otezla); anti-TNF Fc fusion (Enbrel)"},
+        "ONC":  {"rev_b": 7, "drug": "Blincyto + Kyprolis + Lumakras + Vectibix + Imdelltra (tarlatamab)", "cliff": "Blincyto 2028 US; Kyprolis 2027 US; Lumakras 2034+ US", "indication": "B-ALL (Blincyto); MM (Kyprolis); KRAS G12C NSCLC (Lumakras); ES-SCLC (Imdelltra)", "moa": "CD19xCD3 BiTE (Blincyto); proteasome (Kyprolis); KRAS G12C (Lumakras); DLL3xCD3 BiTE (Imdelltra)"},
+        "HEM":  {"rev_b": 6, "drug": "Prolia + Xgeva (denosumab)", "cliff": "Denosumab biosim launched 2025 — major exposure", "indication": "Osteoporosis (Prolia); SRE in bone mets (Xgeva)", "moa": "Anti-RANKL mAb"},
+        "CVR":  {"rev_b": 1.7, "drug": "Repatha (evolocumab)", "cliff": "2029 US", "indication": "ASCVD; HoFH; LDL-C lowering", "moa": "Anti-PCSK9 mAb"},
+        "RAR":  {"rev_b": 3, "drug": "Krystexxa + Uplizna + Tepezza overlap", "cliff": "Krystexxa biosim ~2028; Uplizna 2030+ US", "indication": "Refractory gout; NMOSD, IgG4-RD", "moa": "Pegloticase (Krystexxa); anti-CD19 (Uplizna)"}
+      }
+    },
+    {
+      "rank": 15, "name": "Gilead Sciences", "ticker": "GILD", "rx_rev_2024_usd_b": 28.7,
+      "pipeline_counts": {"total": 55, "late": 15, "early": 40, "source": "Gilead 2024 pipeline page"},
+      "revenue_by_ta": {
+        "ID":   {"rev_b": 19, "drug": "Biktarvy + Descovy + Yeztugo (lenacapavir LA, approved 2025)", "cliff": "Biktarvy 2033 US; Descovy 2025 US; lenacapavir 2034+ US", "indication": "HIV treatment (Biktarvy); HIV PrEP (Descovy + lenacapavir LA)", "moa": "INSTI+NRTI combo; capsid inhibitor (lenacapavir)"},
+        "ONC":  {"rev_b": 5, "drug": "Trodelvy + Yescarta + Tecartus + Seladelpar (post-CymaBay)", "cliff": "Trodelvy 2030+ US; Yescarta 2034+ US", "indication": "TNBC, HR+/HER2- breast, urothelial (Trodelvy); LBCL (Yescarta); MCL (Tecartus); primary biliary cholangitis (Seladelpar)", "moa": "TROP2 ADC (Trodelvy); CD19 CAR-T (Yescarta/Tecartus); PPARδ (Seladelpar)"},
+        "RAR":  {"rev_b": 0.8, "drug": "Seladelpar (Livdelzi, post-CymaBay)", "cliff": "2032+ US", "indication": "PBC", "moa": "Selective PPARδ agonist"}
+      }
+    },
+    {
+      "rank": 16, "name": "Bayer (Pharma)", "ticker": "BAYN.DE", "rx_rev_2024_usd_b": 20.5,
+      "pipeline_counts": {"total": 50, "late": 15, "early": 35, "source": "Bayer Pharma 2024 pipeline"},
+      "revenue_by_ta": {
+        "CVR":  {"rev_b": 5, "drug": "Xarelto (rivaroxaban) + Kerendia (finerenone)", "cliff": "Xarelto Feb 2026 EU; May 2027 US; Kerendia 2034+ US", "indication": "AFib, VTE; CKD-T2D (Kerendia)", "moa": "Direct factor Xa (Xarelto); non-steroidal MRA (Kerendia)"},
+        "OPH":  {"rev_b": 4, "drug": "Eylea (aflibercept, declining w/ biosim) + Eylea HD", "cliff": "Eylea US biosim launched 2024; Eylea HD 2027+ US", "indication": "Wet AMD, DME, RVO", "moa": "Anti-VEGF-A/B + PlGF fusion"},
+        "ONC":  {"rev_b": 3, "drug": "Nubeqa (darolutamide) + Stivarga + Xofigo", "cliff": "Nubeqa 2033+ US; Stivarga 2030 US", "indication": "mCRPC and nmCRPC (Nubeqa); refractory mCRC (Stivarga); CRPC bone (Xofigo)", "moa": "Selective AR antagonist (Nubeqa); multi-kinase (Stivarga); Ra-223 alpha-emitter"},
+        "RAR":  {"rev_b": 0.3, "drug": "Adempas (riociguat) + Verquvo collab", "cliff": "Adempas 2027 US", "indication": "PAH, CTEPH", "moa": "sGC stimulator"}
+      }
+    },
+    {
+      "rank": 17, "name": "Vertex Pharmaceuticals", "ticker": "VRTX", "rx_rev_2024_usd_b": 10.9,
+      "pipeline_counts": {"total": 30, "late": 10, "early": 20, "source": "Vertex 2024 pipeline page"},
+      "revenue_by_ta": {
+        "RAR":  {"rev_b": 10.5, "drug": "Trikafta / Kaftrio (ELX-TEZ-IVA) + Alyftrek (vanza triple, launching) + Casgevy", "cliff": "Trikafta 2037+ US (extended); Casgevy long runway as gene therapy", "indication": "Cystic fibrosis (95% of CF population); sickle cell / β-thal (Casgevy)", "moa": "CFTR correctors + potentiator (Trikafta/Alyftrek); CRISPR/Cas9 BCL11A enhancer disruption ex vivo (Casgevy)"},
+        "NEU":  {"rev_b": 0.2, "drug": "Journavx (suzetrigine, approved 2025)", "cliff": "2037+ US", "indication": "Moderate-to-severe acute pain", "moa": "Selective NaV1.8 inhibitor (non-opioid)"}
+      }
+    },
+    {
+      "rank": 18, "name": "Boehringer Ingelheim", "ticker": "(Private)", "rx_rev_2024_usd_b": 27.0,
+      "pipeline_counts": {"total": 50, "late": 15, "early": 35, "source": "BI 2024 pipeline page (estimates — private)"},
+      "revenue_by_ta": {
+        "END":  {"rev_b": 9, "drug": "Jardiance (empagliflozin, w/ Lilly)", "cliff": "Aug 2028 US", "indication": "T2D, HFrEF, HFpEF, CKD", "moa": "SGLT2 inhibitor"},
+        "RES":  {"rev_b": 5, "drug": "Spiriva (declining) + Ofev (nintedanib) + Spevigo", "cliff": "Spiriva off-patent 2022+; Ofev 2030 US", "indication": "COPD; IPF, SSc-ILD, PPF; generalized pustular psoriasis", "moa": "LAMA (Spiriva); triple kinase (Ofev); anti-IL36R (Spevigo)"},
+        "IMM":  {"rev_b": 1.2, "drug": "Spevigo overlap; Cyltezo (biosim Humira)", "cliff": "—", "indication": "—", "moa": "—"},
+        "CVR":  {"rev_b": 1, "drug": "Pradaxa (dabigatran, declining)", "cliff": "Off-patent 2018+", "indication": "AFib, VTE prevention", "moa": "Direct thrombin inhibitor"}
+      }
+    },
+    {
+      "rank": 19, "name": "Daiichi Sankyo", "ticker": "4568.T", "rx_rev_2024_usd_b": 12.5,
+      "pipeline_counts": {"total": 35, "late": 15, "early": 20, "source": "Daiichi 2024 pipeline page"},
+      "revenue_by_ta": {
+        "ONC":  {"rev_b": 6, "drug": "Enhertu (T-DXd, w/ AZ — Daiichi share) + Vanflyta + Datroway", "cliff": "Enhertu 2034+ US; Datroway 2034+ US", "indication": "HER2+ breast/gastric/lung (Enhertu); FLT3+ AML (Vanflyta); TNBC, NSCLC (Datroway)", "moa": "HER2 ADC w/ DXd payload (Enhertu); FLT3 inhibitor (Vanflyta); TROP2 ADC (Datroway)"},
+        "CVR":  {"rev_b": 1, "drug": "Lixiana (edoxaban, declining in some markets)", "cliff": "Off-patent in Japan 2024; US/EU later", "indication": "AFib, VTE prevention", "moa": "Direct factor Xa inhibitor"},
+        "VAC":  {"rev_b": 0.5, "drug": "Daichirona (declining COVID vaccine) + LAIVs", "cliff": "—", "indication": "COVID-19; flu", "moa": "mRNA; live-attenuated"}
+      }
+    },
+    {
+      "rank": 20, "name": "Regeneron", "ticker": "REGN", "rx_rev_2024_usd_b": 14.2,
+      "pipeline_counts": {"total": 35, "late": 15, "early": 20, "source": "Regeneron 2024 pipeline page"},
+      "revenue_by_ta": {
+        "OPH":  {"rev_b": 9, "drug": "Eylea + Eylea HD (aflibercept 8mg)", "cliff": "Eylea US biosim launched 2024; Eylea HD 2027-2032 US", "indication": "Wet AMD, DME, RVO, ROP, mCNV", "moa": "Anti-VEGF-A/B + PlGF fusion"},
+        "IMM":  {"rev_b": 4, "drug": "Dupixent (w/ Sanofi — Regeneron share)", "cliff": "2030+ US", "indication": "Atopic dermatitis, asthma, EoE, prurigo nodularis, COPD, CRSwNP", "moa": "Anti-IL-4Rα mAb"},
+        "ONC":  {"rev_b": 1, "drug": "Libtayo (cemiplimab) + Linvoseltamab + Odronextamab", "cliff": "Libtayo 2034+ US", "indication": "CSCC, BCC, NSCLC (Libtayo); MM (Linvoseltamab); B-NHL (Odronextamab)", "moa": "Anti-PD-1 (Libtayo); BCMAxCD3 bispecific (Linvoseltamab); CD20xCD3 bispecific (Odronextamab)"}
+      }
+    }
+  ]
+}

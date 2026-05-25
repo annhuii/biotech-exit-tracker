@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pharma Pipelines · Biotech Exit Tracker</title>
+  <link rel="stylesheet" href="styles/main.css?v=3" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Biotech Exit Tracker<span> · v1</span></div>
+    <nav>
+      <a href="index.html">Overview</a>
+      <a href="pipelines.html">Pharma Pipelines</a>
+      <a href="ma.html">M&amp;A Deals</a>
+      <a href="ipos.html">IPOs</a>
+    </nav>
+    <div class="updated">Updated 2026-05-24</div>
+  </header>
+
+  <main>
+    <h1>Pharma Pipelines — Top 20 by Rx Revenue</h1>
+    <p class="subtitle">Three structured views: who's acquired the most, where each pharma's commercial strength sits today, and how deep each pipeline is.</p>
+
+    <div class="method">
+      <strong>Caveats — read first:</strong>
+      <ul style="margin: 8px 0 0 0; padding-left: 20px;">
+        <li><strong>Fully hand-curated, not automated.</strong> Pipeline data lags whatever each company most recently posted on its own site — no live scraping.</li>
+        <li><strong>Sources:</strong> company 10-K segment reporting (revenue), each company's own published pipeline page or R&amp;D-day deck (pipeline counts and lead assets), FDA Orange/Purple Book + analyst aggregations (patent cliff dates).</li>
+        <li><strong>Revenue figures</strong> are approximate FY2024 prescription drug sales by therapeutic area, in USD billions. Rounded for readability — not precision figures.</li>
+        <li><strong>Boehringer Ingelheim is private</strong> — figures are external estimates only.</li>
+        <li><strong>Patent cliff dates</strong> are US composition-of-matter / biologic exclusivity unless otherwise noted.</li>
+        <li><strong>Verify against the company's own source</strong> before citing any specific number.</li>
+      </ul>
+    </div>
+
+    <!-- ====================== SECTION 1: LEADERBOARD ====================== -->
+    <div class="panel">
+      <h2>1. Acquisition leaderboard (2021–present)</h2>
+      <p class="note">Each pharma's aggregate outbound M&amp;A + licensing + partnership activity since 2021, ranked by total deal value. Includes both outright acquisitions and major in-licensing deals. Source: this dashboard's own M&amp;A data — click <a href="ma.html">M&amp;A Deals</a> to see the underlying rows.</p>
+      <table id="leaderboard">
+        <thead>
+          <tr>
+            <th data-sort="acquirer">Pharma</th>
+            <th data-sort="num_deals" class="num">No. of deals</th>
+            <th data-sort="avg_deal" class="num">Avg deal size</th>
+            <th data-sort="total_deal" class="num">Total deal value</th>
+            <th data-sort="largest">Largest deal</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- ====================== SECTION 2: STRENGTHS ====================== -->
+    <div class="panel">
+      <h2>2. Therapeutic-area revenue strengths (FY2024)</h2>
+      <p class="note">Approximate FY2024 prescription drug revenue by therapeutic area, in USD billions. <strong>Hover any cell</strong> to see core drug, patent cliff date, indication, MOA, and % of company's Rx revenue. Numbers rounded — meant to inform discussion, not as precision figures. Verify any specific number against the company's 10-K before citing.</p>
+      <div class="legend" id="ta-legend"></div>
+      <div class="heatmap">
+        <table id="strengths">
+          <thead><tr id="strengths-header"></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ====================== SECTION 3: REPLENISHMENT ====================== -->
+    <div class="panel">
+      <h2>3. Pipeline replenishment depth</h2>
+      <p class="note">Total number of programs in each pharma's <em>publicly disclosed</em> clinical pipeline. Split into late stage (Phase 2, Phase 3, pre-commercial filed) and early stage (preclinical + Phase 1). Source-of-truth is each company's own pipeline page — these are approximations, verify before citing.</p>
+      <div class="legend">
+        <span><span class="swatch" style="background: var(--accent);"></span> Late stage (Ph2 / Ph3 / pre-commercial)</span>
+        <span><span class="swatch" style="background: #93a8e3;"></span> Early stage (preclinical + Ph1)</span>
+      </div>
+      <div class="filters" style="margin-top: 8px;">
+        <span class="label">Sort by</span>
+        <span class="chip active" data-sort="total">Total programs</span>
+        <span class="chip" data-sort="late">Late-stage count</span>
+        <span class="chip" data-sort="early">Early-stage count</span>
+        <span class="chip" data-sort="rank">Revenue rank</span>
+      </div>
+      <div id="replenishment"></div>
+    </div>
+
+    <div class="footer">
+      Pharma data hand-curated from FY2024 10-K segment disclosures, R&amp;D days, and analyst aggregations. M&amp;A leaderboard auto-aggregated from the M&amp;A page. Revenue figures and pipeline counts are approximate — refer to each company's investor relations site for source-of-truth.
+    </div>
+  </main>
+
+  <script src="scripts/main.js"></script>
+  <script>
+    (async () => {
+      const [pharma, ma] = await Promise.all([
+        loadJSON("data/pharma.json"),
+        loadJSON("data/ma.json")
+      ]);
+
+      // -------- Helpers --------
+      const fmtB = (n) => n >= 10 ? `$${n.toFixed(0)}B` : `$${n.toFixed(1)}B`;
+      const fmtBcompact = (n) => n >= 10 ? `${n.toFixed(0)}` : `${n.toFixed(1)}`;
+
+      // -------- Section 1: Leaderboard --------
+      const acquirerMap = {};
+      ma.deals.forEach(d => {
+        if (!d.acquirer) return;
+        if (!acquirerMap[d.acquirer]) acquirerMap[d.acquirer] = { deals: [], total: 0 };
+        acquirerMap[d.acquirer].deals.push(d);
+        acquirerMap[d.acquirer].total += d.headline_value_usd_b || 0;
+      });
+      let leaderboardData = Object.entries(acquirerMap).map(([acquirer, info]) => {
+        const largest = info.deals.reduce((m, d) => (d.headline_value_usd_b || 0) > (m.headline_value_usd_b || 0) ? d : m, info.deals[0]);
+        return {
+          acquirer,
+          num_deals: info.deals.length,
+          avg_deal: info.total / info.deals.length,
+          total_deal: info.total,
+          largest: largest ? `${largest.target.split(" (")[0].split(" — ")[0]} ($${largest.headline_value_usd_b.toFixed(1)}B, ${largest.announce_date.slice(0,4)})` : ""
+        };
+      }).sort((a, b) => b.total_deal - a.total_deal);
+
+      function renderLeaderboard() {
+        const tb = document.querySelector("#leaderboard tbody");
+        tb.innerHTML = leaderboardData.map(r => `
+          <tr>
+            <td><strong>${r.acquirer}</strong></td>
+            <td class="num">${r.num_deals}</td>
+            <td class="num">$${r.avg_deal.toFixed(2)}B</td>
+            <td class="num"><strong>$${r.total_deal.toFixed(1)}B</strong></td>
+            <td class="small muted">${r.largest}</td>
+          </tr>
+        `).join("");
+      }
+      renderLeaderboard();
+
+      // Leaderboard sortable
+      document.querySelectorAll("#leaderboard thead th").forEach(h => {
+        h.style.cursor = "pointer";
+        let asc = false;
+        h.addEventListener("click", () => {
+          asc = !asc; const k = h.dataset.sort;
+          leaderboardData.sort((a, b) => {
+            const va = a[k], vb = b[k];
+            if (typeof va === "number") return asc ? va - vb : vb - va;
+            return asc ? String(va).localeCompare(String(vb)) : String(vb).localeCompare(String(va));
+          });
+          document.querySelectorAll("#leaderboard thead th").forEach(x => x.classList.remove("sorted", "asc"));
+          h.classList.add("sorted");
+          if (asc) h.classList.add("asc");
+          renderLeaderboard();
+        });
+      });
+
+      // -------- Section 2: Strengths matrix --------
+      const taOrder = ["ONC", "IMM", "NEU", "CVR", "END", "RAR", "VAC", "RES", "OPH", "ID", "HEM", "GI", "AES"];
+      const taLabels = pharma.ta_legend;
+
+      const legendEl = document.getElementById("ta-legend");
+      legendEl.innerHTML = taOrder.map(k => `<span><strong>${k}</strong> ${taLabels[k]}</span>`).join("");
+
+      const headerEl = document.getElementById("strengths-header");
+      headerEl.innerHTML = '<th>Company</th>' + taOrder.map(k => `<th class="num" title="${taLabels[k]}">${k}</th>`).join("") + '<th class="num">Total Rx</th>';
+
+      function tier(rev) {
+        if (rev >= 25) return 5;
+        if (rev >= 15) return 4;
+        if (rev >= 8)  return 3;
+        if (rev >= 3)  return 2;
+        if (rev >= 0.3) return 1;
+        return 0;
+      }
+
+      const sBody = document.querySelector("#strengths tbody");
+      sBody.innerHTML = pharma.companies.map(c => {
+        const cells = taOrder.map(ta => {
+          const r = c.revenue_by_ta?.[ta];
+          if (!r) return '<td class="ta-cell" data-level="0"></td>';
+          const pct = Math.round((r.rev_b / c.rx_rev_2024_usd_b) * 100);
+          const tooltipHtml = `
+            <div class="tt-drug"><strong>${r.drug || "—"}</strong></div>
+            <div class="tt-line"><span class="tt-label">Patent cliff:</span> ${r.cliff || "—"}</div>
+            <div class="tt-line"><span class="tt-label">Indication:</span> ${r.indication || "—"}</div>
+            <div class="tt-line"><span class="tt-label">MOA:</span> ${r.moa || "—"}</div>
+            <div class="tt-foot">${fmtB(r.rev_b)} · ${pct}% of company Rx</div>
+          `;
+          return `
+            <td class="ta-cell ta-rev" data-tier="${tier(r.rev_b)}">
+              ${fmtBcompact(r.rev_b)}
+              <div class="cell-tooltip">${tooltipHtml}</div>
+            </td>
+          `;
+        }).join("");
+        return `
+          <tr>
+            <td class="company-cell"><strong>${c.name}</strong><span class="ticker">${c.ticker}</span></td>
+            ${cells}
+            <td class="num"><strong>$${c.rx_rev_2024_usd_b.toFixed(1)}B</strong></td>
+          </tr>
+        `;
+      }).join("");
+
+      // -------- Section 3: Replenishment bars --------
+      let replenSortKey = "total";
+      const maxTotal = Math.max(...pharma.companies.map(c => c.pipeline_counts?.total || 0));
+
+      function renderReplenishment() {
+        const container = document.getElementById("replenishment");
+        const sorted = pharma.companies.slice().sort((a, b) => {
+          if (replenSortKey === "rank") return a.rank - b.rank;
+          const ka = a.pipeline_counts?.[replenSortKey] || 0;
+          const kb = b.pipeline_counts?.[replenSortKey] || 0;
+          return kb - ka;
+        });
+        container.innerHTML = sorted.map(c => {
+          const p = c.pipeline_counts || { total: 0, late: 0, early: 0 };
+          const latePct = (p.late / maxTotal) * 100;
+          const earlyPct = (p.early / maxTotal) * 100;
+          return `
+            <div class="bar-row" title="${p.source || ""}">
+              <div class="bar-label"><strong>${c.name}</strong><span class="ticker">${c.ticker}</span></div>
+              <div class="bar-late-count">${p.late}</div>
+              <div class="pipeline-bar">
+                <div class="seg-late" style="width: ${latePct}%;" title="${p.late} late-stage programs"></div>
+                <div class="seg-early" style="width: ${earlyPct}%;" title="${p.early} preclinical/Ph1 programs"></div>
+              </div>
+              <div class="bar-total"><strong>${p.total}</strong></div>
+            </div>
+          `;
+        }).join("");
+      }
+      renderReplenishment();
+
+      document.querySelectorAll(".chip[data-sort]").forEach(c => {
+        c.addEventListener("click", () => {
+          document.querySelectorAll(".chip[data-sort]").forEach(x => x.classList.remove("active"));
+          c.classList.add("active");
+          replenSortKey = c.dataset.sort;
+          renderReplenishment();
+        });
+      });
+    })().catch(e => {
+      document.querySelector("main").innerHTML += `<div class="method">Error loading data: ${e.message}</div>`;
+      console.error(e);
+    });
+  </script>
+</body>
+</html>
