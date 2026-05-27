@@ -35,6 +35,9 @@ jobs:
       - name: Refresh M&A deals from SEC EDGAR
         run: python scripts/refresh_ma.py
 
+      - name: Refresh pharma pipelines from SEC EDGAR (10-K + 20-F)
+        run: python data/fetch_edgar_pharma.py
+
       - name: Update "as_of" date
         run: python scripts/stamp_date.py
 

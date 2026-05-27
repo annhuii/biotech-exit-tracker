@@ -48,16 +48,23 @@
       <p class="note">How each page is sourced, and what's automated vs hand-curated. Read this before citing any specific number.</p>
 
       <details open>
-        <summary><strong>Pharma Pipelines — fully hand-curated</strong></summary>
+        <summary><strong>Pharma Pipelines — hybrid (strategic curation + EDGAR 10-K/20-F extraction)</strong></summary>
         <div class="body">
-          <p><strong>Top-20 pharma by Rx revenue.</strong> No automation; every cell is read off a primary source by hand:</p>
+          <p><strong>Strategic curation (hand-maintained):</strong></p>
           <ul>
-            <li><strong>Revenue by therapeutic area</strong> — company 10-K segment reporting + Q4 earnings call decks (FY2024 figures, rounded to USD billions).</li>
-            <li><strong>Pipeline counts and lead assets</strong> — each company's own published pipeline page or most recent R&amp;D-day deck.</li>
-            <li><strong>Patent cliff dates</strong> — US composition-of-matter or biologic exclusivity expiry, cross-checked against FDA Orange/Purple Book and analyst aggregations.</li>
-            <li><strong>Boehringer Ingelheim</strong> is private — figures are estimates only.</li>
+            <li><strong>Revenue by therapeutic area</strong> — company 10-K segment reporting + Q4 earnings call decks (FY2024, rounded USD billions).</li>
+            <li><strong>Lead assets, MOA, rationale per TA</strong> — each company's R&amp;D-day decks and analyst aggregations.</li>
+            <li><strong>Patent cliff dates</strong> — US composition-of-matter / biologic exclusivity expiry from FDA Orange/Purple Book + analyst aggregations.</li>
           </ul>
-          <p class="muted small">Implication: pipeline data lags whatever each company most recently updated on its own site. Always verify against the source before citing.</p>
+          <p><strong>Active clinical pipeline (automated weekly via SEC EDGAR):</strong></p>
+          <ul>
+            <li>For each pharma in scope, pull the latest <strong>10-K</strong> (US filers) or <strong>20-F</strong> (foreign filers — AstraZeneca, Novartis, Sanofi, GSK, Novo, Takeda) from EDGAR.</li>
+            <li>Parse the HTML with BeautifulSoup, <strong>expanding <code>&lt;td rowspan="N"&gt;</code></strong> so each row of the pipeline table becomes a fully-populated (Compound, Indication, Status, Developments) tuple. This handles the "one drug → multiple indications" structure pharma uses in 10-K disclosures.</li>
+            <li>Two detection patterns: (1) status-keyword tables (Phase 1/2/3, Approved, Submitted — Lilly/Sanofi/GSK style); (2) patent-expiry tables (drug code + year — Merck style).</li>
+            <li>Script: <code>data/fetch_edgar_pharma.py</code>. Output: <code>data/pharma_auto.json</code> with EDGAR filing references per company.</li>
+          </ul>
+          <p><strong>Coverage today: 6 of 16 SEC-filing pharmas extract cleanly</strong> (Lilly, Sanofi, GSK, Pfizer, Merck, AstraZeneca = 244 compound-indication rows). The other 10 SEC filers use prose narrative or non-standard table formats that the parser doesn't yet handle reliably — those rely on hand-curated data. <strong>4 pharmas (Roche, Bayer, Daiichi, Boehringer) don't file with SEC</strong> and stay manually curated.</p>
+          <p class="muted small">Implication: where automated, pipeline data refreshes weekly on new 10-K / 10-Q filings. Where not yet automated, data lags. The Methodology box on the Pipelines page lists which companies are which.</p>
         </div>
       </details>
 

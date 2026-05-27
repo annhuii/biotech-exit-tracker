@@ -1,0 +1,1875 @@
+{
+  "as_of": "2026-05-28",
+  "source": "SEC EDGAR \u2014 10-K (US filers) and 20-F (foreign filers)",
+  "methodology": "For each pharma, pull the latest 10-K (US) or 20-F (foreign) from SEC EDGAR. Parse the HTML with BeautifulSoup, expanding <td rowspan='N'> attributes so each row of the pipeline table becomes a fully-populated (Compound, Indication, Status, Developments) tuple. This captures the 'one drug \u2192 multiple indications' structure that companies use in 10-K pipeline disclosures. 4 of 20 pharmas (Roche, Bayer, Daiichi, Boehringer) do not file with SEC \u2014 they remain manually curated. Latest interim filing (10-Q or 6-K) is referenced.",
+  "companies": [
+    {
+      "name": "Pfizer",
+      "cik": "78003",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-26",
+          "accession": "0000078003-26-000026",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000026/pfe-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-05",
+          "accession": "0000078003-26-000054",
+          "url": "https://www.sec.gov/Archives/edgar/data/78003/000007800326000054/pfe-20260329.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "PRODUCT",
+          "indication": "INDICATION OR PROPOSED INDICATION",
+          "status": "APPROVED/FILED^",
+          "developments": ""
+        },
+        {
+          "compound": "Nurtec ODT/Vydura (rimegepant)",
+          "indication": "Acute treatment of migraine with or without aura in adults",
+          "status": "Approved February 2020",
+          "developments": "Approved April 2022"
+        },
+        {
+          "compound": "Nurtec ODT/Vydura (rimegepant)",
+          "indication": "Prevention of episodic migraine in adults",
+          "status": "Approved May 2021",
+          "developments": "Approved April 2022"
+        },
+        {
+          "compound": "Abrysvo (Vaccine)",
+          "indication": "Active immunization for the prevention of lower respiratory tract disease caused by RSV in individuals 18-59 years of age who are at increased risk of lower respiratory tract disease caused by RSV",
+          "status": "Approved October 2024",
+          "developments": "Approved March 2025"
+        },
+        {
+          "compound": "Velsipity (etrasimod)",
+          "indication": "Moderately to severely active UC in adults",
+          "status": "Approved October 2023",
+          "developments": "Approved February 2024"
+        },
+        {
+          "compound": "Hympavzi (marstacimab-hncq)",
+          "indication": "Adults and pediatric patients 12 years of age and older with hemophilia A with FVIII inhibitors or hemophilia B with FIX inhibitors",
+          "status": "Filed February 2026",
+          "developments": "Filed October 2025"
+        },
+        {
+          "compound": "Hympavzi (marstacimab-hncq)",
+          "indication": "Pediatric patients \u22656 to <12 years of age with hemophilia A with or without FVIII inhibitors, or hemophilia B with or without FIX inhibitors",
+          "status": "Filed February 2026",
+          "developments": ""
+        },
+        {
+          "compound": "Emblaveo (aztreonam-avibactam) (b)",
+          "indication": "Treatment of infections in adult patients caused by Gram-negative bacteria with limited or no treatment options",
+          "status": "Approved February 2025",
+          "developments": "Approved April 2024"
+        },
+        {
+          "compound": "Tivdak (tisotumab vedotin-tftv) (c)",
+          "indication": "Recurrent or mCC with disease progression on or after chemotherapy",
+          "status": "Approved April 2024",
+          "developments": "Approved March 2025"
+        },
+        {
+          "compound": "Adcetris (brentuximab vedotin) (e)",
+          "indication": "Relapsed/refractory diffuse large B-cell lymphoma",
+          "status": "Approved February 2025",
+          "developments": ""
+        },
+        {
+          "compound": "Adcetris (brentuximab vedotin) (e)",
+          "indication": "Hodgkin\u2019s lymphoma",
+          "status": "Approved March 2018",
+          "developments": "Approved June 2025"
+        },
+        {
+          "compound": "vepdegestrant (PF-07850327) (g)",
+          "indication": "Breast cancer metastatic - 2nd line ER+/HER2- ESR1mu",
+          "status": "Filed August 2025",
+          "developments": ""
+        },
+        {
+          "compound": "Tukysa (tucatinib)",
+          "indication": "Treatment of adult patients with advanced or metastatic HER2+ breast cancer",
+          "status": "Approved April 2020",
+          "developments": "Approved February 2026"
+        },
+        {
+          "compound": "Ibrance (palbociclib) (h)",
+          "indication": "ER+/HER2+ metastatic breast cancer",
+          "status": "Filed November 2025",
+          "developments": "Filed December 2025"
+        },
+        {
+          "compound": "Padcev (enfortumab vedotin-ejfv) (i)",
+          "indication": "Combination with pembrolizumab as perioperative treatment of adult patients with cisplatin ineligible muscle invasive bladder cancer (MIBC)",
+          "status": "Approved November 2025",
+          "developments": "Filed November 2025"
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "approved": 11,
+        "submitted": 4
+      }
+    },
+    {
+      "name": "Johnson & Johnson",
+      "cik": "200406",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-11",
+          "accession": "0000200406-26-000016",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000016/jnj-20251228.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-04-22",
+          "accession": "0000200406-26-000087",
+          "url": "https://www.sec.gov/Archives/edgar/data/200406/000020040626000087/jnj-20260329.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Merck & Co.",
+      "cik": "310158",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-24",
+          "accession": "0000310158-26-000063",
+          "url": "https://www.sec.gov/Archives/edgar/data/310158/000031015826000063/mrk-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-04",
+          "accession": "0001628280-26-029802",
+          "url": "https://www.sec.gov/Archives/edgar/data/310158/000162828026029802/mrk-20260331.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "V181",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2029"
+        },
+        {
+          "compound": "MK-2400 (ifinatamab deruxtecan) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2034"
+        },
+        {
+          "compound": "MK-1022 (patritumab deruxtecan) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2035"
+        },
+        {
+          "compound": "MK-1308A (quavonlimab + pembrolizumab)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2035"
+        },
+        {
+          "compound": "MK-1026 (nemtabrutinib)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2035"
+        },
+        {
+          "compound": "MK-8527",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2035"
+        },
+        {
+          "compound": "V940 (intismeran autogene) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2036"
+        },
+        {
+          "compound": "MK-3543 (bomedemstat)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2036"
+        },
+        {
+          "compound": "MK-5684 (opevesostat)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2037"
+        },
+        {
+          "compound": "MK-8591D (islatravir + lenacapavir) (1)(2)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2037"
+        },
+        {
+          "compound": "MK-2140 (zilovertamab vedotin)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2038"
+        },
+        {
+          "compound": "MK-4482 Lagevrio (1)(3)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2038"
+        },
+        {
+          "compound": "MK-5909 (raludotatug deruxtecan) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2038"
+        },
+        {
+          "compound": "MK-1406 (4)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2039"
+        },
+        {
+          "compound": "MK-2870 (sacituzumab tirumotecan) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2040"
+        },
+        {
+          "compound": "MK-0616 (enlicitide decanoate)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2040"
+        },
+        {
+          "compound": "MK-7240 (tulisokibart)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2040"
+        },
+        {
+          "compound": "MK-1084 (calderasib) (1)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2041"
+        },
+        {
+          "compound": "MK-3000 (5)",
+          "indication": "(patent table \u2014 see Phase 3)",
+          "status": "Phase 3",
+          "developments": "Patent expiry 2041"
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "phase3": 19
+      }
+    },
+    {
+      "name": "AbbVie",
+      "cik": "1551152",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-20",
+          "accession": "0001551152-26-000008",
+          "url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115226000008/abbv-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-08",
+          "accession": "0001551152-26-000017",
+          "url": "https://www.sec.gov/Archives/edgar/data/1551152/000155115226000017/abbv-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Eli Lilly",
+      "cik": "59478",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-12",
+          "accession": "0000059478-26-000013",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000013/lly-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-04-30",
+          "accession": "0000059478-26-000045",
+          "url": "https://www.sec.gov/Archives/edgar/data/59478/000005947826000045/lly-20260331.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Heart failure with preserved ejection fraction",
+          "status": "Approved",
+          "developments": "Approved in the EU."
+        },
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Pediatric and adolescent type 2 diabetes",
+          "status": "Approved",
+          "developments": "Approved in the U.S. and the EU."
+        },
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Cardiovascular outcomes in type 2 diabetes",
+          "status": "Submitted",
+          "developments": "Submitted in the U.S."
+        },
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Metabolic dysfunction-associated steatotic liver disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Morbidity and mortality in obesity",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Tirzepatide (Mounjaro, Zepbound)",
+          "indication": "Type 1 diabetes",
+          "status": "Phase 3",
+          "developments": "Phase 3 trials were initiated."
+        },
+        {
+          "compound": "Insulin efsitora alfa",
+          "indication": "Type 2 diabetes",
+          "status": "Submitted",
+          "developments": "Submitted in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Obesity (1)",
+          "status": "Submitted",
+          "developments": "Submitted in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Type 2 diabetes",
+          "status": "Submitted",
+          "developments": "Submitted in the EU. Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Cardiovascular outcomes",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Hypertension",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Obstructive Sleep Apnea (OSA)",
+          "status": "Phase 3",
+          "developments": "Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Osteoarthritis pain",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Peripheral artery disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Orforglipron",
+          "indication": "Stress urinary incontinence",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Eloralintide",
+          "indication": "Obesity",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Lepodisiran",
+          "indication": "Atherosclerotic cardiovascular disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Muvalaplin",
+          "indication": "Atherosclerotic cardiovascular disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Retatrutide",
+          "indication": "Cardiovascular / renal outcomes",
+          "status": "Phase 3",
+          "developments": "Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Retatrutide",
+          "indication": "Chronic low back pain",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Retatrutide",
+          "indication": "Metabolic dysfunction-associated steatotic liver disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Retatrutide",
+          "indication": "Obesity, osteoarthritis, OSA",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial met all primary and key secondary endpoints. Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Retatrutide",
+          "indication": "Type 2 diabetes",
+          "status": "Phase 3",
+          "developments": "Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Mirikizumab (Omvoh)",
+          "indication": "Crohn's disease",
+          "status": "Approved",
+          "developments": "Approved in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Lebrikizumab (2)",
+          "indication": "AR (perennial allergens)",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Lebrikizumab (2)",
+          "indication": "CRSwNP",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Donanemab (Kisunla)",
+          "indication": "Early Alzheimer's disease",
+          "status": "Approved",
+          "developments": "Approved in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Donanemab (Kisunla)",
+          "indication": "Pre-clinical Alzheimer's disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Brenipatide",
+          "indication": "Alcohol use disorder",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Ixo-vec",
+          "indication": "Wet age\u2011related macular degeneration",
+          "status": "Phase 3",
+          "developments": "Acquired in the acquisition of Adverum Biotechnologies, Inc. Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Remternetug",
+          "indication": "Pre-clinical/MCI Alzheimer's disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 trials are ongoing."
+        },
+        {
+          "compound": "Imlunestrant (Inluriyo)",
+          "indication": "ER+, HER2-, ESR1-mutated advanced or metastatic breast cancer",
+          "status": "Approved",
+          "developments": "Approved in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Imlunestrant (Inluriyo)",
+          "indication": "Adjuvant breast cancer",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Pirtobrutinib (Jaypirca)",
+          "indication": "Chronic lymphocytic leukemia",
+          "status": "Approved",
+          "developments": "Full approval in the U.S., the EU, and Japan."
+        },
+        {
+          "compound": "Olomorasib (3)",
+          "indication": "1L KRAS G12C+ NSCLC",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial is ongoing."
+        },
+        {
+          "compound": "Olomorasib (3)",
+          "indication": "Resected adjuvant NSCLC",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Olomorasib (3)",
+          "indication": "Unresected adjuvant NSCLC",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        },
+        {
+          "compound": "Sofetabart mipitecan (FR\u03b1 ADC) (3)",
+          "indication": "Platinum-resistant ovarian cancer",
+          "status": "Phase 3",
+          "developments": "Phase 3 trial was initiated."
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "approved": 6,
+        "submitted": 4,
+        "phase3": 28
+      }
+    },
+    {
+      "name": "Bristol Myers Squibb",
+      "cik": "14272",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-11",
+          "accession": "0000014272-26-000004",
+          "url": "https://www.sec.gov/Archives/edgar/data/14272/000001427226000004/bmy-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-04-30",
+          "accession": "0000014272-26-000010",
+          "url": "https://www.sec.gov/Archives/edgar/data/14272/000001427226000010/bmy-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Amgen",
+      "cik": "318154",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-13",
+          "accession": "0000318154-26-000010",
+          "url": "https://www.sec.gov/Archives/edgar/data/318154/000031815426000010/amgn-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-01",
+          "accession": "0000318154-26-000057",
+          "url": "https://www.sec.gov/Archives/edgar/data/318154/000031815426000057/amgn-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Vertex Pharmaceuticals",
+      "cik": "875320",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-13",
+          "accession": "0000875320-26-000056",
+          "url": "https://www.sec.gov/Archives/edgar/data/875320/000087532026000056/vrtx-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-05",
+          "accession": "0000875320-26-000173",
+          "url": "https://www.sec.gov/Archives/edgar/data/875320/000087532026000173/vrtx-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Gilead Sciences",
+      "cik": "882095",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-24",
+          "accession": "0000882095-26-000006",
+          "url": "https://www.sec.gov/Archives/edgar/data/882095/000088209526000006/gild-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-05-07",
+          "accession": "0000882095-26-000024",
+          "url": "https://www.sec.gov/Archives/edgar/data/882095/000088209526000024/gild-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Regeneron",
+      "cik": "872589",
+      "filer_type": "us-10K",
+      "filings": {
+        "10-K": {
+          "filing_date": "2026-02-04",
+          "accession": "0000872589-26-000008",
+          "url": "https://www.sec.gov/Archives/edgar/data/872589/000087258926000008/regn-20251231.htm"
+        },
+        "10-Q": {
+          "filing_date": "2026-04-29",
+          "accession": "0000872589-26-000016",
+          "url": "https://www.sec.gov/Archives/edgar/data/872589/000087258926000016/regn-20260331.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 10-K; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "AstraZeneca",
+      "cik": "901832",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2026-02-24",
+          "accession": "0001104659-26-019130",
+          "url": "https://www.sec.gov/Archives/edgar/data/901832/000110465926019130/azn-20251231x20f.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-05-27",
+          "accession": "0001654954-26-005381",
+          "url": "https://www.sec.gov/Archives/edgar/data/901832/000165495426005381/a7798f.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "Enhertu (platform) DESTINY-Breast07",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Enhertu DESTINY-PanTumor03 (China)",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Enhertu DESTINY-PanTumor01",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Enhertu DESTINY-PanTumor02",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Imfinzi combinations BEGONIA",
+          "indication": "\u200b",
+          "status": "Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Imfinzi combinations HUDSON",
+          "indication": "\u200b",
+          "status": "Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Imfinzi combinations NeoCOAST-2",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Tagrisso + Orpathys SAVANNAH",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Tagrisso combinations ORCHARD",
+          "indication": "\u200b",
+          "status": "(PP) Phase II LCM",
+          "developments": "\u200b"
+        },
+        {
+          "compound": "Truqap",
+          "indication": "\u200b",
+          "status": "Phase II LCM",
+          "developments": "\u200b"
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "phase2": 10
+      }
+    },
+    {
+      "name": "Novartis",
+      "cik": "1114448",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2026-02-04",
+          "accession": "0001114448-26-000004",
+          "url": "https://www.sec.gov/Archives/edgar/data/1114448/000111444826000004/nvs-20251231.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-04-28",
+          "accession": "0001114448-26-000010",
+          "url": "https://www.sec.gov/Archives/edgar/data/1114448/000111444826000010/a260428-6k.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 20-F; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Sanofi",
+      "cik": "1121404",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2026-02-17",
+          "accession": "0001628280-26-008403",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121404/000162828026008403/sny-20251231.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-05-27",
+          "accession": "0001193125-26-240810",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121404/000119312526240810/d134599d6k.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "atopic dermatitis",
+          "status": "Phase 3",
+          "developments": "Positive Phase 3 study readouts (COAST 1 in 2025, and in COAST\u00a02 and SHORE in January 2026)"
+        },
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "asthma",
+          "status": "phase 2",
+          "developments": "Phase 2 study readouts: primary endpoint not met; improvements across key secondary endpoints (TIDE)"
+        },
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "hidradenitis suppurativa",
+          "status": "Removed from Phase 2",
+          "developments": "Negative outcome"
+        },
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "celiac disease",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "alopecia areata",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "amlitelimab (OX40L mAb)",
+          "indication": "systemic sclerosis",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "lunsekimig (IL13\u00d7TSLP NANOBODY \u00ae VHH)",
+          "indication": "chronic obstructive pulmonary disease",
+          "status": "Phase 3",
+          "developments": "New indication in pipeline; studies ongoing (PERSEPHONE and THESUS)"
+        },
+        {
+          "compound": "lunsekimig (IL13\u00d7TSLP NANOBODY \u00ae VHH)",
+          "indication": "asthma",
+          "status": "Phase 2",
+          "developments": "Study ongoing (AIRCULES)"
+        },
+        {
+          "compound": "lunsekimig (IL13\u00d7TSLP NANOBODY \u00ae VHH)",
+          "indication": "asthma, high-risk",
+          "status": "Phase 2",
+          "developments": "Study ongoing (AIRLYMPUS)"
+        },
+        {
+          "compound": "lunsekimig (IL13\u00d7TSLP NANOBODY \u00ae VHH)",
+          "indication": "chronic rhinosinusitis with nasal polyps",
+          "status": "Phase 2",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "lunsekimig (IL13\u00d7TSLP NANOBODY \u00ae VHH)",
+          "indication": "atopic dermatitis",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "brivekimig (TNFa\u00d7OX40L NANOBODY \u00ae VHH)",
+          "indication": "hidradenitis suppurativa",
+          "status": "Phase 2",
+          "developments": "Phase 2a study readouts: primary endpoint met (HS-OBTAIN); Phase 2b study ongoing (BRIGHTEN)"
+        },
+        {
+          "compound": "brivekimig (TNFa\u00d7OX40L NANOBODY \u00ae VHH)",
+          "indication": "Crohn\u2019s disease",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "brivekimig (TNFa\u00d7OX40L NANOBODY \u00ae VHH)",
+          "indication": "ulcerative colitis",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "brivekimig (TNFa\u00d7OX40L NANOBODY \u00ae VHH)",
+          "indication": "type 1 diabetes, stage 3",
+          "status": "Phase 2",
+          "developments": "New indication; study ongoing (T1D OBTAIN)"
+        },
+        {
+          "compound": "duvakitug (TL1A mAb)",
+          "indication": "ulcerative colitis",
+          "status": "Phase 3",
+          "developments": "New phase; studies ongoing (SUNSCAPE-1 and SUNSCAPE-2). Phase 2b study readouts: primary endpoint met (RELIEVE UCCD); durable efficacy demonstrated in long-term extension study (RELIEVE UCCD LTE; Febr"
+        },
+        {
+          "compound": "duvakitug (TL1A mAb)",
+          "indication": "Crohn\u2019s disease",
+          "status": "Phase 3",
+          "developments": "New phase; studies ongoing (STARCAPE-1 and STARCAPE-2). Phase 2b study readouts: primary endpoint met (RELIEVE UCCD); durable efficacy demonstrated in long-term extension study (RELIEVE UCCD LTE; Febr"
+        },
+        {
+          "compound": "balinatunfib (oral TNFR1 signaling inhibitor)",
+          "indication": "rheumatoid arthritis",
+          "status": "Removed from Phase 2",
+          "developments": "Phase 2 study readouts: primary endpoint not met; future development strategy under evaluation"
+        },
+        {
+          "compound": "balinatunfib (oral TNFR1 signaling inhibitor)",
+          "indication": "Crohn\u2019s disease",
+          "status": "Phase 2",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "balinatunfib (oral TNFR1 signaling inhibitor)",
+          "indication": "ulcerative colitis",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "balinatunfib (oral TNFR1 signaling inhibitor)",
+          "indication": "psoriasis",
+          "status": "Removed from Phase 2",
+          "developments": "Phase 2 study readouts: primary endpoint not met (SPECIFIC-PSO); removed from pipeline"
+        },
+        {
+          "compound": "itepekimab (IL33 mAb)",
+          "indication": "chronic obstructive pulmonary disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 study readouts - primary endpoint met (AERIFY-1); not met (AERIFY-2)"
+        },
+        {
+          "compound": "itepekimab (IL33 mAb)",
+          "indication": "chronic rhinosinusitis with nasal polyps",
+          "status": "Phase 3",
+          "developments": "New indication in pipeline; studies ongoing (CEREN 1 and CEREN\u00a02)"
+        },
+        {
+          "compound": "itepekimab (IL33 mAb)",
+          "indication": "bronchiectasis",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "itepekimab (IL33 mAb)",
+          "indication": "chronic rhinosinusitis without nasal polyps",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "SAR449028 (wild-type KIT inhibitor)",
+          "indication": "chronic induced/spontaneous urticaria",
+          "status": "Phase 2",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "SAR449028 (wild-type KIT inhibitor)",
+          "indication": "allergic rhinoconjunctivitis",
+          "status": "Phase 2",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "SAR444336 (non-beta IL2 Synthorin)",
+          "indication": "microscopic colitis",
+          "status": "Phase 2",
+          "developments": "New phase; study ongoing"
+        },
+        {
+          "compound": "frexalimab (CD40L mAb)",
+          "indication": "systemic lupus erythematosus",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "frexalimab (CD40L mAb)",
+          "indication": "type 1 diabetes",
+          "status": "Phase 2",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "rilzabrutinib (BTK inhibitor)",
+          "indication": "asthma",
+          "status": "Phase 2",
+          "developments": "Phase 3 study to start in 2026"
+        },
+        {
+          "compound": "rilzabrutinib (BTK inhibitor)",
+          "indication": "chronic spontaneous urticaria",
+          "status": "Phase 2",
+          "developments": "Phase 3 study to start in 2026"
+        },
+        {
+          "compound": "riliprubart (C1s mAb)",
+          "indication": "antibody-mediated rejection",
+          "status": "Phase 2",
+          "developments": "Regulatory designation: US ODD"
+        },
+        {
+          "compound": "SAR445399 (IL1R3 mAb)",
+          "indication": "hidradenitis suppurativa",
+          "status": "Phase 2",
+          "developments": "New phase; study ongoing (CLAROS)"
+        },
+        {
+          "compound": "SAR446422 (CD28\u00d7OX40 bispecific Ab)",
+          "indication": "inflammatory indication",
+          "status": "Phase 1",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "SAR446959 (MMP13\u00d7ADAMTS5\u00d7CAP NANOBODY \u00ae VHH)",
+          "indication": "knee osteoarthritis",
+          "status": "Phase 1",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "SAR448501 (CD20 bispecific mAb)",
+          "indication": "inflammatory indication",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "SAR448755 (STAT6 inhibitor)",
+          "indication": "inflammatory indication",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "Wayrilz (rilzabrutinib - BTK inhibitor)",
+          "indication": "warm autoimmune hemolytic anemia",
+          "status": "Phase 3",
+          "developments": "New indication in pipeline; study ongoing (LUMINA 3); Regulatory designations: US ODD; US breakthrough therapy and orphan drug in Japan (in February 2026)"
+        },
+        {
+          "compound": "Wayrilz (rilzabrutinib - BTK inhibitor)",
+          "indication": "sickle cell disease",
+          "status": "Phase 3",
+          "developments": "New indication in pipeline; study ongoing (LIBRA); Regulatory designation: US ODD"
+        },
+        {
+          "compound": "Wayrilz (rilzabrutinib - BTK inhibitor)",
+          "indication": "Graves\u2019 disease",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing"
+        },
+        {
+          "compound": "Wayrilz (rilzabrutinib - BTK inhibitor)",
+          "indication": "IgG4-related disease",
+          "status": "Phase 3",
+          "developments": "New phase; study ongoing (RILIEF); Regulatory designations: US ODD, EU orphan designation; US FTD"
+        },
+        {
+          "compound": "elenestinib (D816V-mutated KIT inhibitor)",
+          "indication": "indolent/smoldering systemic mastocytosis",
+          "status": "Phase 3",
+          "developments": "New project in pipeline; study ongoing (HARBOR)"
+        },
+        {
+          "compound": "venglustat (oral GCS inhibitor)",
+          "indication": "Fabry disease",
+          "status": "Phase 3",
+          "developments": "Phase 3 study readouts (PERIDOT): primary endpoint not met; reduction in neuropathic and abdominal pain observed. Study evaluating effect on left cardiac ventricular mass index ongoing (CARAT)."
+        },
+        {
+          "compound": "venglustat (oral GCS inhibitor)",
+          "indication": "Gaucher disease type 3",
+          "status": "Phase 3",
+          "developments": "Phase 3 study readouts (LEAP2MONO) in February 2026: primary endpoints met. Sanofi will pursue global regulatory filings."
+        },
+        {
+          "compound": "efdoralprin alfa (AAT fusion protein)",
+          "indication": "alpha-1 antitrypsin deficiency emphysema",
+          "status": "Phase 2",
+          "developments": "Phase 2 study readouts: primary endpoint met (ElevAATe); Regulatory designations: US ODD, EU orphan designation"
+        },
+        {
+          "compound": "frexalimab, rilzabrutinib, brivekimig",
+          "indication": "focal segmental glomerulosclerosis/ minimal change disease",
+          "status": "Phase 2",
+          "developments": "New indication in pipeline; study ongoing (RESULT)"
+        },
+        {
+          "compound": "SAR446268 (DMPK AAV gene therapy)",
+          "indication": "myotonic dystrophy type 1",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing (BrAAVe) Regulatory designation: US ODD"
+        },
+        {
+          "compound": "tolebrutinib (BTK inhibitor)",
+          "indication": "primary progressive MS",
+          "status": "Removed from Phase 3",
+          "developments": "Study readouts - primary endpoint not met (PERSEUS)"
+        },
+        {
+          "compound": "frexalimab (CD40L mAb)",
+          "indication": "relapsing MS",
+          "status": "Phase 3",
+          "developments": "Study ongoing (FREXALT)"
+        },
+        {
+          "compound": "frexalimab (CD40L mAb)",
+          "indication": "non-relapsing secondary progressive MS",
+          "status": "Phase 3",
+          "developments": "Study ongoing (FREVIVA)"
+        },
+        {
+          "compound": "riliprubart (C1s mAb)",
+          "indication": "SOC-refractory CIDP",
+          "status": "Phase 3",
+          "developments": "Regulatory designation: JP ODD - Study ongoing"
+        },
+        {
+          "compound": "riliprubart (C1s mAb)",
+          "indication": "IVIg-treated CIDP",
+          "status": "Phase 3",
+          "developments": "Regulatory designation: JP ODD - Study ongoing"
+        },
+        {
+          "compound": "S AR402663 (sFLT01 AAV gene therapy)",
+          "indication": "wet age-related macular degeneration",
+          "status": "Phase 2",
+          "developments": "Regulatory designation: US FTD - Study ongoing"
+        },
+        {
+          "compound": "SAR448851 (TREM2 agonist)",
+          "indication": "Alzheimer\u2019s disease",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "SAR446597 (Bb\u00d7C1s Ab AAV gene therapy)",
+          "indication": "geographic atrophy in dry age- related macular degeneration",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing Regulatory designation: US FTD"
+        },
+        {
+          "compound": "SP0087 (vero cell vaccine)",
+          "indication": "rabies",
+          "status": "Phase 3",
+          "developments": "Phase 3 study readouts: positive safety and immunogenicity results. Under regulatory review in the EU."
+        },
+        {
+          "compound": "SP0202 (21-valent conjugate vaccine)",
+          "indication": "pneumococcal disease (children)",
+          "status": "Phase 3",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "SP0218 (vero cell vaccine)",
+          "indication": "yellow fever",
+          "status": "Phase 3",
+          "developments": "New phase; study ongoing"
+        },
+        {
+          "compound": "SP0230 (5-valent ACWY+B vaccine)",
+          "indication": "meningitis",
+          "status": "Phase 2",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "SP0256 (mRNA\u00a0 vaccine)",
+          "indication": "RSV+hMPV (older adults)",
+          "status": "Phase 2",
+          "developments": "Phase 2b study readouts (RSV mRNA vaccine alone): high efficacy RSV mRNA vaccine alone on several endpoints. Phase 1/2 study readouts (RSV+hMPV mRNA vaccine): very competitive anti-hMPV antibody level"
+        },
+        {
+          "compound": "SP0268 (mRNA vaccine)",
+          "indication": "acne",
+          "status": "Phase 2",
+          "developments": "New phase; study ongoing"
+        },
+        {
+          "compound": "SP0289 (mRNA vaccine)",
+          "indication": "flu H5 pandemic",
+          "status": "Phase 2",
+          "developments": "Phase 1/2 study: good safety profile and strong immunogenicity results; New phase; phase 2 study ongoing"
+        },
+        {
+          "compound": "SP0335 (inactivated adjuvanted vaccine)",
+          "indication": "flu H5 pandemic",
+          "status": "Phase 2",
+          "developments": "Sanofi received funding from the BARDA for early-stage clinical work on this vaccine candidate including Novavax\u2019s Matrix-M adjuvant."
+        },
+        {
+          "compound": "SP0269 (mRNA vaccine)",
+          "indication": "chlamydia",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; Phase 1/2 study ongoing; Regulatory designation: US FTD"
+        },
+        {
+          "compound": "SP0287 (Fluzone HD + Nuvaxovid)",
+          "indication": "flu+COVID-19",
+          "status": "Phase 1",
+          "developments": "Phase 1/2 study: preliminary positive safety and immunogenicity results"
+        },
+        {
+          "compound": "SP0287 (Flublok + Nuvaxovid)",
+          "indication": "flu+COVID-19",
+          "status": "Phase 1",
+          "developments": "Phase 1/2 study: preliminary positive safety and immunogenicity results"
+        },
+        {
+          "compound": "SP0291 (mRNA vaccine)",
+          "indication": "RSV+hMPV+PIV3 (older adults)",
+          "status": "Phase 1",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "SP0340 (subunit vaccine)",
+          "indication": "RSV+hMPV (older adults)",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "SP0341 (subunit vaccine)",
+          "indication": "RSV+hMPV+PIV3 (older adults)",
+          "status": "Phase 1",
+          "developments": "New project in pipeline; study ongoing"
+        },
+        {
+          "compound": "Dupixent (dupilumab \u2013 IL4R mAb)",
+          "indication": "Regulatory",
+          "status": "Approved in Japan",
+          "developments": ""
+        },
+        {
+          "compound": "Dupixent (dupilumab \u2013 IL4R mAb)",
+          "indication": "chronic pruritus of unknown origin",
+          "status": "Phase 3",
+          "developments": "Phase 3 study ongoing (LIBERTY-CPUO-CHIC)"
+        },
+        {
+          "compound": "Dupixent (dupilumab \u2013 IL4R mAb)",
+          "indication": "lichen simplex chronicus",
+          "status": "Phase 3",
+          "developments": "Phase 3 studies ongoing (STYLE 1 and STYLE 2)"
+        },
+        {
+          "compound": "Dupixent (dupilumab \u2013 IL4R mAb)",
+          "indication": "eosinophilic gastritis",
+          "status": "Removed from Phase 3",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "Dupixent (dupilumab \u2013 IL4R mAb)",
+          "indication": "ulcerative colitis",
+          "status": "Removed from Phase 2",
+          "developments": "Indication deprioritized"
+        },
+        {
+          "compound": "Rezurock (belumosudil \u2013 ROCK2 inhibitor)",
+          "indication": "chronic lung allograft dysfunction",
+          "status": "Phase 3",
+          "developments": "Phase 3 study ongoing (ROCKaspire)"
+        },
+        {
+          "compound": "Rezurock (belumosudil \u2013 ROCK2 inhibitor)",
+          "indication": "chronic graft versus host disease, first line",
+          "status": "Removed from Phase 3",
+          "developments": "Phase 3 study discontinued based on pre-specified futility interim analysis (ROCKnrol-1)"
+        },
+        {
+          "compound": "Nexviazyme (avalglucosidase alfa \u2013 enzyme replacement therapy)",
+          "indication": "infantile-onset Pompe disease",
+          "status": "Phase 3",
+          "developments": "Study ongoing (Baby-COMET)"
+        },
+        {
+          "compound": "Cerezyme (imiglucerase \u2013 enzyme replacement therapy)",
+          "indication": "Regulatory",
+          "status": "Approved in the US (in January 2026)",
+          "developments": ""
+        },
+        {
+          "compound": "Sarclisa (isatuximab \u2013 CD38 mAb)",
+          "indication": "Regulatory",
+          "status": "Approved in the EU, Japan and China",
+          "developments": ""
+        },
+        {
+          "compound": "Sarclisa (isatuximab \u2013 CD38 mAb)",
+          "indication": "smoldering multiple myeloma",
+          "status": "Phase 3",
+          "developments": "Phase 3 study ongoing (ITHACA)"
+        },
+        {
+          "compound": "Sarclisa (isatuximab \u2013 CD38 mAb)",
+          "indication": "R/R MM in combination",
+          "status": "Phase 2",
+          "developments": "Study ongoing"
+        },
+        {
+          "compound": "Fluzone HD (multivalent inactivated vaccine)",
+          "indication": "flu (50+ years)",
+          "status": "Phase 3",
+          "developments": "Phase 3 study readouts: positive safety and immunogenicity results at interim analysis"
+        },
+        {
+          "compound": "MenQuadfi (4\u2013valent ACWY conjugate vaccine)",
+          "indication": "Regulatory",
+          "status": "Approved in the US",
+          "developments": ""
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "phase3": 28,
+        "phase2": 39,
+        "phase1": 13,
+        "approved": 4
+      }
+    },
+    {
+      "name": "GSK",
+      "cik": "1131399",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2026-03-06",
+          "accession": "0001131399-26-000004",
+          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000113139926000004/gsk-20251231.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-05-27",
+          "accession": "0001654954-26-005405",
+          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000165495426005405/a9163f.htm"
+        }
+      },
+      "pipeline": [
+        {
+          "compound": "Exdensur (depemokimab) \u2020",
+          "indication": "Asthma",
+          "status": "Approved",
+          "developments": "A: 1Q26"
+        },
+        {
+          "compound": "Exdensur (depemokimab) \u2020",
+          "indication": "Chronic rhinosinusitis with nasal polyps (CRSwNP)",
+          "status": "Approved",
+          "developments": "A: 1Q26"
+        },
+        {
+          "compound": "Exdensur (depemokimab) \u2020",
+          "indication": "Chronic obstructive pulmonary disease (COPD)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Exdensur (depemokimab) \u2020",
+          "indication": "Eosinophilic granulomatosis with polyangiitis (EGPA)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Exdensur (depemokimab) \u2020",
+          "indication": "Hypereosinophilic syndrome (HES)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Nucala (mepolizumab)",
+          "indication": "Chronic obstructive pulmonary disease (COPD)",
+          "status": "Approved",
+          "developments": "A: 1Q26"
+        },
+        {
+          "compound": "linerixibat",
+          "indication": "Cholestatic pruritus in primary biliary cholangitis (PBC)",
+          "status": "Registration",
+          "developments": "S: 2Q25"
+        },
+        {
+          "compound": "camlipixant",
+          "indication": "Refractory chronic cough (RCC)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "efimosfermin alfa \u2020",
+          "indication": "Metabolic dysfunction-associated steatohepatitis (MASH)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Ventolin (salbutamol)",
+          "indication": "Asthma, low carbon version of metered dose inhaler",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Benlysta (belimumab)",
+          "indication": "Systemic sclerosis associated interstitial lung disease",
+          "status": "Phase II (1)",
+          "developments": ""
+        },
+        {
+          "compound": "Benlysta (belimumab)",
+          "indication": "Interstitial lung disease associated with connective tissue disease",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4532990 \u2020",
+          "indication": "Metabolic dysfunction-associated steatohepatitis (MASH)",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4532990 \u2020",
+          "indication": "Alcohol-related liver disease (ALD)",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "GSK5784283 \u2020",
+          "indication": "Asthma",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "nivisnebart \u2020",
+          "indication": "Alzheimer\u2019s disease",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "GSK3862995",
+          "indication": "Chronic obstructive pulmonary disease (COPD)",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4347859",
+          "indication": "Systemic lupus erythematosus",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4527363",
+          "indication": "Systemic lupus erythematosus",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4528287 \u2020",
+          "indication": "Inflammatory bowel disease",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4771261",
+          "indication": "Autosomal dominant polycystic kidney disease",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK5926371 \u2020",
+          "indication": "Autoimmune disease",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK6582701 \u2020",
+          "indication": "Chronic obstructive pulmonary disease (COPD)",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK6759821 \u2020",
+          "indication": "Chronic obstructive pulmonary disease (COPD)",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "Blenrep (belantamab mafodotin) \u2020",
+          "indication": "2L+ Multiple myeloma combination with Pomalyst and dexamethasone",
+          "status": "Approved",
+          "developments": "A: 2Q25"
+        },
+        {
+          "compound": "Blenrep (belantamab mafodotin) \u2020",
+          "indication": "2L+ Multiple myeloma combination with Velcade and dexamethasone",
+          "status": "Approved",
+          "developments": "A: 2Q25"
+        },
+        {
+          "compound": "Blenrep (belantamab mafodotin) \u2020",
+          "indication": "1L Multiple myeloma combination with Revlimid and dexamethasone",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Blenrep (belantamab mafodotin) \u2020",
+          "indication": "Newly diagnosed amyloid light chain amyloidosis",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Blenrep (belantamab mafodotin) \u2020",
+          "indication": "1L Multiple myeloma combination with Velcade, Revlimid and dexamethasone",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "Jemperli (dostarlimab) \u2020",
+          "indication": "Peri-operative dMMR/MSI-H colon cancer",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Jemperli (dostarlimab) \u2020",
+          "indication": "Unresected head and neck squamous cell carcinoma",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Jemperli (dostarlimab) \u2020",
+          "indication": "1L Endometrial cancer",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Jemperli (dostarlimab) \u2020",
+          "indication": "Neoadjuvant dMMR/MSI-H rectal cancer",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Jemperli (dostarlimab) \u2020",
+          "indication": "Previously untreated MMRp/MSS colon cancer",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "risvutatug rezetecan \u2020",
+          "indication": "Extensive-stage small-cell lung cancer",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "risvutatug rezetecan \u2020",
+          "indication": "PanGI",
+          "status": "Phase I (2)",
+          "developments": ""
+        },
+        {
+          "compound": "risvutatug rezetecan \u2020",
+          "indication": "Solid tumours",
+          "status": "Phase I (2)",
+          "developments": ""
+        },
+        {
+          "compound": "velzatinib \u2020",
+          "indication": "Gastrointestinal stromal tumours (GIST)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Zejula (niraparib) \u2020",
+          "indication": "Newly diagnosed glioblastoma multiforme",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Ojjaara/Omjjara (momelotinib) \u2020",
+          "indication": "Myelodysplastic syndrome",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Ojjaara/Omjjara (momelotinib) \u2020",
+          "indication": "Myelofibrosis",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "belantamab",
+          "indication": "Multiple myeloma",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK5458514 \u2020",
+          "indication": "Prostate cancer",
+          "status": "Phase I (2)",
+          "developments": ""
+        },
+        {
+          "compound": "GSK5460025",
+          "indication": "Solid tumours",
+          "status": "Phase I (2)",
+          "developments": ""
+        },
+        {
+          "compound": "mocertatug rezetecan \u2020",
+          "indication": "Gynaecologic malignancies",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "mocertatug rezetecan \u2020",
+          "indication": "Gynaecologic malignancies combination with anti cancer therapies",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "XMT-2056 (wholly owned by Mersana Therapeutics) \u2020(3)",
+          "indication": "Cancer",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "cabotegravir",
+          "indication": "HIV treatment",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "VH3810109 \u2020",
+          "indication": "HIV treatment",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "VH4011499",
+          "indication": "HIV treatment",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "VH4524184 \u2020",
+          "indication": "HIV treatment",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "VH4527079",
+          "indication": "HIV treatment",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "Arexvy (RSV vaccine) \u2020",
+          "indication": "Respiratory syncytial virus prophylaxis, adults 18-49 years of age at increased risk",
+          "status": "Approved",
+          "developments": "A: 1Q26"
+        },
+        {
+          "compound": "Bluejpa ( gepotidacin) \u2020",
+          "indication": "Uncomplicated urinary tract infection (uUTI)",
+          "status": "Approved",
+          "developments": ""
+        },
+        {
+          "compound": "Bluejpa ( gepotidacin) \u2020",
+          "indication": "Urogenital gonorrhoea (GC)",
+          "status": "Approved",
+          "developments": ""
+        },
+        {
+          "compound": "Penmenvy (Men ABCWY 1 st Gen)",
+          "indication": "MenABCWY, 1st Gen",
+          "status": "Approved",
+          "developments": ""
+        },
+        {
+          "compound": "tebipenem pivoxil \u2020",
+          "indication": "Complicated urinary tract infection (cUTI)",
+          "status": "Registration",
+          "developments": ""
+        },
+        {
+          "compound": "bepirovirsen \u2020",
+          "indication": "Chronic hepatitis B virus infection",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "bepirovirsen \u2020",
+          "indication": "Human immunodeficiency virus (HIV)/hepatitis B virus (HBV) co-infection",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Bexsero vaccine",
+          "indication": "Meningitis B (infants US)",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "Varicella new seed \u2020",
+          "indication": "Varicella",
+          "status": "Phase III",
+          "developments": ""
+        },
+        {
+          "compound": "alpibectir \u2020",
+          "indication": "Tuberculosis",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "ganfeborole \u2020",
+          "indication": "Tuberculosis",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "mRNA Seasonal Flu \u2020",
+          "indication": "Seasonal flu",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "mRNA COVID-19 \u2020",
+          "indication": "COVID-19",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Measles, mumps, rubella & varicella new seed",
+          "indication": "Measles, mumps, rubella, and varicella",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "Measles, mumps, rubella & varicella new seed",
+          "indication": "Urinary tract infection (UTI)",
+          "status": "Phase II (2)",
+          "developments": ""
+        },
+        {
+          "compound": "mRNA Flu H5N1 pre- pandemic \u2020",
+          "indication": "Influenza A virus H5N1",
+          "status": "Phase II (2)",
+          "developments": ""
+        },
+        {
+          "compound": "daplusiran + tomligisiran \u2020",
+          "indication": "Chronic hepatitis B virus infection",
+          "status": "Phase II",
+          "developments": ""
+        },
+        {
+          "compound": "GSK3772701 \u2020",
+          "indication": "Malaria",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK3882347 \u2020",
+          "indication": "Uncomplicated urinary tract infection (uUTI)",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK3923868",
+          "indication": "Rhinovirus disease",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK3965193",
+          "indication": "Chronic hepatitis B virus infection",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4024484 \u2020",
+          "indication": "Malaria",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK4424989 \u2020",
+          "indication": "Group A streptococcal infections",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "GSK5251738 \u2020",
+          "indication": "Chronic hepatitis B virus infection",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "Pneumococcal 30+ valent - adults \u2020",
+          "indication": "Pneumococcal disease",
+          "status": "Phase I",
+          "developments": ""
+        },
+        {
+          "compound": "mRNA Seasonal Flu/ COVID-19 \u2020",
+          "indication": "Seasonal flu and COVID-19",
+          "status": "Phase I (2)",
+          "developments": ""
+        }
+      ],
+      "extraction_notes": [],
+      "phase_counts": {
+        "approved": 9,
+        "phase3": 17,
+        "submitted": 2,
+        "phase2": 23,
+        "phase1": 27
+      }
+    },
+    {
+      "name": "Novo Nordisk",
+      "cik": "353278",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2026-02-04",
+          "accession": "0000353278-26-000012",
+          "url": "https://www.sec.gov/Archives/edgar/data/353278/000035327826000012/nvo-20251231.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-05-27",
+          "accession": "0001171843-26-003710",
+          "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184326003710/f6k_052626.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 20-F; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Takeda",
+      "cik": "1395064",
+      "filer_type": "foreign-20F",
+      "filings": {
+        "20-F": {
+          "filing_date": "2025-06-25",
+          "accession": "0001395064-25-000095",
+          "url": "https://www.sec.gov/Archives/edgar/data/1395064/000139506425000095/tak-20250331.htm"
+        },
+        "6-K": {
+          "filing_date": "2026-05-26",
+          "accession": "0001395064-26-000162",
+          "url": "https://www.sec.gov/Archives/edgar/data/1395064/000139506426000162/form6k_052626x1.htm"
+        }
+      },
+      "pipeline": [],
+      "extraction_notes": [
+        "No pipeline table found in 20-F; company may disclose in narrative format only"
+      ],
+      "phase_counts": {}
+    },
+    {
+      "name": "Roche",
+      "cik": null,
+      "filer_type": "not-in-edgar",
+      "extraction_notes": [
+        "Does not file with SEC; stays manually curated"
+      ],
+      "pipeline": []
+    },
+    {
+      "name": "Bayer (Pharma)",
+      "cik": null,
+      "filer_type": "not-in-edgar",
+      "extraction_notes": [
+        "Does not file with SEC; stays manually curated"
+      ],
+      "pipeline": []
+    },
+    {
+      "name": "Daiichi Sankyo",
+      "cik": null,
+      "filer_type": "not-in-edgar",
+      "extraction_notes": [
+        "Does not file with SEC; stays manually curated"
+      ],
+      "pipeline": []
+    },
+    {
+      "name": "Boehringer Ingelheim",
+      "cik": null,
+      "filer_type": "not-in-edgar",
+      "extraction_notes": [
+        "Does not file with SEC; stays manually curated"
+      ],
+      "pipeline": []
+    }
+  ]
+}

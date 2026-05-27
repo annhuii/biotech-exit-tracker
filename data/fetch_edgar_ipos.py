@@ -21,7 +21,8 @@ KEYWORDS = [
     "antibody", "radiopharmaceutical"
 ]
 
-OUTPUT_PATH = "/Users/annhuiching/Library/CloudStorage/OneDrive-Personal/coding/pharma website/data/edgar_ipo_pull.json"
+import os
+OUTPUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "edgar_ipo_pull.json")
 
 
 def sleep():

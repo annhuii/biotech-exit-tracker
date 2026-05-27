@@ -25,10 +25,10 @@
     <div class="method">
       <strong>Caveats — read first:</strong>
       <ul style="margin: 8px 0 0 0; padding-left: 20px;">
-        <li><strong>Fully hand-curated, not automated.</strong> Pipeline data lags whatever each company most recently posted on its own site — no live scraping.</li>
-        <li><strong>Sources:</strong> company 10-K segment reporting (revenue), each company's own published pipeline page or R&amp;D-day deck (pipeline counts and lead assets), FDA Orange/Purple Book + analyst aggregations (patent cliff dates).</li>
-        <li><strong>Revenue figures</strong> are approximate FY2024 prescription drug sales by therapeutic area, in USD billions. Rounded for readability — not precision figures.</li>
-        <li><strong>Boehringer Ingelheim is private</strong> — figures are external estimates only.</li>
+        <li><strong>Strategic narrative (revenue by TA, lead asset, MOA, rationale, patent cliffs) is hand-curated.</strong> Sources: company 10-K segment reporting (revenue), each company's R&amp;D-day decks (strategic emphasis), FDA Orange/Purple Book + analyst aggregations (patent cliff dates).</li>
+        <li><strong>Active clinical pipeline (compound × indication × phase) is partially automated</strong> — pulled weekly from SEC EDGAR 10-K (US filers) and 20-F (foreign filers) using BeautifulSoup with rowspan-aware HTML parsing. See <a href="index.html">Overview → Methodology</a> for details. <strong>Currently extracts cleanly for 6 of 20 pharmas</strong> (Lilly, Sanofi, GSK, Pfizer, Merck, AstraZeneca) — their 10-Ks use structured pipeline tables. The other 10 SEC filers use prose narrative or non-standard table formats that the parser doesn't yet handle reliably; those rely on hand-curated data.</li>
+        <li><strong>4 of 20 pharmas don't file with SEC at all</strong> (Roche, Bayer, Daiichi Sankyo, Boehringer Ingelheim — all non-US-listed or private) and stay fully manually curated.</li>
+        <li><strong>Revenue figures</strong> are approximate FY2024 prescription drug sales by therapeutic area, in USD billions. Rounded for readability.</li>
         <li><strong>Patent cliff dates</strong> are US composition-of-matter / biologic exclusivity unless otherwise noted.</li>
         <li><strong>Verify against the company's own source</strong> before citing any specific number.</li>
       </ul>

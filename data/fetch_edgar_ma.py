@@ -48,7 +48,8 @@ END_DATE    = "2026-05-24"
 DELAY       = 0.12       # ≤ 10 req/sec
 MIN_VALUE_B = 0.5        # $500M threshold for "filtered" output
 
-OUTPUT_PATH = "/Users/annhuiching/Library/CloudStorage/OneDrive-Personal/coding/pharma website/data/edgar_ma_pull.json"
+import os
+OUTPUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "edgar_ma_pull.json")
 
 # ── HTTP helpers ───────────────────────────────────────────────────────────────
 
