@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-05-25",
+  "as_of": "2026-06-01",
   "scope": "Biotech/pharma deals announced 2021-01-01 through 2026-05-25, global. Three deal types: Acquisition (full equity, all sizes \u2014 US public-company acquisitions sourced systematically from SEC EDGAR SC 14D9 + DEFM14A filings filtered to biotech SIC codes 2830/2833/2835/2836/8731), Licensing (asset/platform rights, $500M+ headline), Partnership+Equity (collab with equity component, $500M+ headline). All dates are ANNOUNCEMENT dates. For public-target acquisitions, deal_structure includes $/share offered + reference unaffected closing price where known. Excludes CRO/diagnostics-only acquisitions, SPAC business combinations, and Concentra-style wind-down purchases.",
   "notes": "Headline value = max economic value to seller including milestones (licensing) or equity value at announcement (acquisitions). Where share prices show 'verify' or '~', double-check before citing. Fact-check workflow: company press release > reputable pharma trade press (Fierce Pharma, Endpoints, BioPharma Dive, etc.). Acquisitions backfilled from EDGAR systematic pull May 2026.",
   "deals": [
@@ -1154,6 +1154,18 @@
       "pathophysiology": "AML is driven by FLT3-ITD/TKD and other kinase signaling; tuspetinib's broader kinase profile may overcome resistance vs first-gen FLT3 inhibitors (e.g., gilteritinib) and complement BCL2 inhibition (venetoclax)",
       "rationale": "Hanmi consolidates full ownership of tuspetinib (originally out-licensed to Aptose) after providing bridge financing \u2014 internalizes a Phase 1/2 AML asset rather than pay Aptose milestones; effectively a take-private of a struggling licensee",
       "china_origin": false
+    }
+  ],
+  "_refresh_log": [
+    {
+      "timestamp_utc": "2026-06-01T11:07:19.798088+00:00",
+      "status": "stub_run",
+      "planned_queries": [
+        "merger agreement biotech pharmaceutical",
+        "definitive agreement to acquire",
+        "asset purchase agreement clinical-stage"
+      ],
+      "note": "Auto-ingest not yet enabled; curated entries unchanged."
     }
   ]
 }
