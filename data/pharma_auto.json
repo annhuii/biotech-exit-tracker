@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-13",
+  "as_of": "2026-06-15",
   "source": "SEC EDGAR \u2014 10-K (US filers) and 20-F (foreign filers)",
   "methodology": "For each pharma, pull the latest 10-K (US) or 20-F (foreign) from SEC EDGAR. Parse the HTML with BeautifulSoup, expanding <td rowspan='N'> attributes so each row of the pipeline table becomes a fully-populated (Compound, Indication, Status, Developments) tuple. This captures the 'one drug \u2192 multiple indications' structure that companies use in 10-K pipeline disclosures. 4 of 20 pharmas (Roche, Bayer, Daiichi, Boehringer) do not file with SEC \u2014 they remain manually curated. Latest interim filing (10-Q or 6-K) is referenced.",
   "companies": [
@@ -672,9 +672,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/901832/000110465926019130/azn-20251231x20f.htm"
         },
         "6-K": {
-          "filing_date": "2026-06-01",
-          "accession": "0001654954-26-005587",
-          "url": "https://www.sec.gov/Archives/edgar/data/901832/000165495426005587/a4701g.htm"
+          "filing_date": "2026-06-15",
+          "accession": "0001654954-26-005964",
+          "url": "https://www.sec.gov/Archives/edgar/data/901832/000165495426005964/a1987i.htm"
         }
       },
       "pipeline": [
@@ -1802,9 +1802,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/353278/000035327826000012/nvo-20251231.htm"
         },
         "6-K": {
-          "filing_date": "2026-06-08",
-          "accession": "0001171843-26-003963",
-          "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184326003963/f6k_060826.htm"
+          "filing_date": "2026-06-15",
+          "accession": "0001171843-26-004116",
+          "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184326004116/f6k_061526.htm"
         }
       },
       "pipeline": [],
