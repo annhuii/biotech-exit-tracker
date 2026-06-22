@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-06-15",
+  "as_of": "2026-06-22",
   "source": "SEC EDGAR \u2014 10-K (US filers) and 20-F (foreign filers)",
   "methodology": "For each pharma, pull the latest 10-K (US) or 20-F (foreign) from SEC EDGAR. Parse the HTML with BeautifulSoup, expanding <td rowspan='N'> attributes so each row of the pipeline table becomes a fully-populated (Compound, Indication, Status, Developments) tuple. This captures the 'one drug \u2192 multiple indications' structure that companies use in 10-K pipeline disclosures. 4 of 20 pharmas (Roche, Bayer, Daiichi, Boehringer) do not file with SEC \u2014 they remain manually curated. Latest interim filing (10-Q or 6-K) is referenced.",
   "companies": [
@@ -1307,9 +1307,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1131399/000113139926000004/gsk-20251231.htm"
         },
         "6-K": {
-          "filing_date": "2026-06-12",
-          "accession": "0001654954-26-005913",
-          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000165495426005913/a0204i.htm"
+          "filing_date": "2026-06-17",
+          "accession": "0001654954-26-006036",
+          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000165495426006036/a7252i.htm"
         }
       },
       "pipeline": [
@@ -1819,9 +1819,9 @@
       "filer_type": "foreign-20F",
       "filings": {
         "20-F": {
-          "filing_date": "2025-06-25",
-          "accession": "0001395064-25-000095",
-          "url": "https://www.sec.gov/Archives/edgar/data/1395064/000139506425000095/tak-20250331.htm"
+          "filing_date": "2026-06-17",
+          "accession": "0001395064-26-000177",
+          "url": "https://www.sec.gov/Archives/edgar/data/1395064/000139506426000177/tak-20260331.htm"
         },
         "6-K": {
           "filing_date": "2026-06-09",
@@ -1829,11 +1829,18 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1395064/000139506426000170/form6k_060926.htm"
         }
       },
-      "pipeline": [],
-      "extraction_notes": [
-        "No pipeline table found in 20-F; company may disclose in narrative format only"
+      "pipeline": [
+        {
+          "compound": "TAK-961\u00a0<IVIG>\u00a0KENKETU\u00a0GLOVENIN-I\u00a0(Japan)",
+          "indication": "Japan",
+          "status": "Approved (Feb 2026)",
+          "developments": ""
+        }
       ],
-      "phase_counts": {}
+      "extraction_notes": [],
+      "phase_counts": {
+        "approved": 1
+      }
     },
     {
       "name": "Roche",
