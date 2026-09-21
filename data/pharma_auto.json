@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-14",
+  "as_of": "2026-09-21",
   "source": "SEC EDGAR \u2014 10-K (US filers) and 20-F (foreign filers)",
   "methodology": "For each pharma, pull the latest 10-K (US) or 20-F (foreign) from SEC EDGAR. Parse the HTML with BeautifulSoup, expanding <td rowspan='N'> attributes so each row of the pipeline table becomes a fully-populated (Compound, Indication, Status, Developments) tuple. This captures the 'one drug \u2192 multiple indications' structure that companies use in 10-K pipeline disclosures. 4 of 20 pharmas (Roche, Bayer, Daiichi, Boehringer) do not file with SEC \u2014 they remain manually curated. Latest interim filing (10-Q or 6-K) is referenced.",
   "companies": [
@@ -672,9 +672,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/901832/000110465926019130/azn-20251231x20f.htm"
         },
         "6-K": {
-          "filing_date": "2026-09-08",
-          "accession": "0001654954-26-008172",
-          "url": "https://www.sec.gov/Archives/edgar/data/901832/000165495426008172/a8764t.htm"
+          "filing_date": "2026-09-21",
+          "accession": "0001654954-26-008478",
+          "url": "https://www.sec.gov/Archives/edgar/data/901832/000165495426008478/a4455v.htm"
         }
       },
       "pipeline": [
@@ -777,9 +777,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1121404/000162828026008403/sny-20251231.htm"
         },
         "6-K": {
-          "filing_date": "2026-08-06",
-          "accession": "0001193125-26-336497",
-          "url": "https://www.sec.gov/Archives/edgar/data/1121404/000119312526336497/d143789d6k.htm"
+          "filing_date": "2026-09-17",
+          "accession": "0001193125-26-393653",
+          "url": "https://www.sec.gov/Archives/edgar/data/1121404/000119312526393653/d517247d6k.htm"
         }
       },
       "pipeline": [
@@ -1307,9 +1307,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/1131399/000113139926000004/gsk-20251231.htm"
         },
         "6-K": {
-          "filing_date": "2026-09-14",
-          "accession": "0001654954-26-008318",
-          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000165495426008318/a5235u.htm"
+          "filing_date": "2026-09-15",
+          "accession": "0001193125-26-391597",
+          "url": "https://www.sec.gov/Archives/edgar/data/1131399/000119312526391597/d180440d6k.htm"
         }
       },
       "pipeline": [
@@ -1802,9 +1802,9 @@
           "url": "https://www.sec.gov/Archives/edgar/data/353278/000035327826000012/nvo-20251231.htm"
         },
         "6-K": {
-          "filing_date": "2026-09-09",
-          "accession": "0001171843-26-005925",
-          "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184326005925/f6k_090726.htm"
+          "filing_date": "2026-09-17",
+          "accession": "0001171843-26-006088",
+          "url": "https://www.sec.gov/Archives/edgar/data/353278/000117184326006088/f6k_091726.htm"
         }
       },
       "pipeline": [],
